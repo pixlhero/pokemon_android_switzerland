@@ -85,6 +85,30 @@
     letter-spacing: 0.08em;
   }
 
+  /* LANG TOGGLE */
+  .lang-toggle {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .lang-btn.active { background: rgba(255,203,5,0.12); border-color: rgba(255,203,5,0.4); color: var(--accent); }
+
   /* LAYOUT */
   .container {
     max-width: 900px;
@@ -340,11 +364,15 @@
 <body>
 
 <div class="hero">
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+  </div>
   <div class="container">
-    <div class="hero-tag">Open Investigation · Android · Switzerland</div>
-    <h1>Pokémon Games Missing from<br><span>Swiss Google Play</span></h1>
-    <p class="hero-sub">Multiple Pokémon mobile games are available on the iOS App Store in Switzerland but absent from the Google Play Store — with no public explanation from any involved party.</p>
-    <p class="updated">Last updated: March 24, 2026</p>
+    <div class="hero-tag" data-i18n="hero-tag">Open Investigation · Android · Switzerland</div>
+    <h1 data-i18n="h1">Pokémon Games Missing from<br><span>Swiss Google Play</span></h1>
+    <p class="hero-sub" data-i18n="hero-sub">Multiple Pokémon mobile games are available on the iOS App Store in Switzerland but absent from the Google Play Store — with no public explanation from any involved party.</p>
+    <p class="updated" data-i18n="updated">Last updated: March 24, 2026</p>
   </div>
 </div>
 
@@ -352,78 +380,78 @@
 
   <!-- IRONY -->
   <section style="display:none">
-    <div class="section-label">Key Irony</div>
-    <div class="callout-irony">
+    <div class="section-label" data-i18n="label-irony">Key Irony</div>
+    <div class="callout-irony" data-i18n="callout-irony">
       <strong>Team Switzerland won the 2024 Pokémon UNITE European Cup</strong> (organized by Unity Clash), beating Germany in the finals — yet Pokémon UNITE is still not available on Android in their own country.
     </div>
   </section>
 
   <!-- AFFECTED GAMES -->
   <section>
-    <div class="section-label">Affected Games</div>
+    <div class="section-label" data-i18n="label-affected">Affected Games</div>
     <div class="game-grid">
       <div class="game-card broken">
-        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon UNITE</div>
         <div class="game-dev">TiMi Studios / Tencent</div>
       </div>
       <div class="game-card broken">
-        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon Sleep</div>
         <div class="game-dev">SELECT BUTTON / The Pokémon Company</div>
       </div>
       <div class="game-card broken">
-        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon Masters EX</div>
         <div class="game-dev">DeNA</div>
       </div>
       <div class="game-card broken">
-        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon Café ReMix</div>
         <div class="game-dev">Genius Sonority / The Pokémon Company</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon GO</div>
         <div class="game-dev">Niantic</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon TCG Pocket</div>
         <div class="game-dev">DeNA / Creatures</div>
       </div>
       <div class="game-card broken">
-        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon HOME</div>
         <div class="game-dev">The Pokémon Company / Game Freak</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon TCG Live</div>
         <div class="game-dev">The Pokémon Company International</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon Smile</div>
         <div class="game-dev">The Pokémon Company</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon Quest</div>
         <div class="game-dev">The Pokémon Company</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon Playhouse</div>
         <div class="game-dev">The Pokémon Company International</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon: Magikarp Jump</div>
         <div class="game-dev">The Pokémon Company</div>
       </div>
       <div class="game-card works">
-        <div class="game-status">✓ Works on both</div>
+        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon Friends</div>
         <div class="game-dev">Wonderfy / H.a.n.d / The Pokémon Company</div>
       </div>
@@ -432,11 +460,11 @@
 
   <!-- REPLIES RECEIVED -->
   <section>
-    <div class="section-label">Replies Received</div>
+    <div class="section-label" data-i18n="label-replies">Replies Received</div>
     <h2 style="font-size:16px; margin-bottom:4px;">DeNA — Pokémon Masters EX Support</h2>
     <div class="reply-meta">
-      <div>From: <span>support@pokemonmasters-game.com</span></div>
-      <div>Date: <span>March 24, 2026 — 14:59 GMT+9</span></div>
+      <div><span data-i18n="reply-from">From:</span> <span>support@pokemonmasters-game.com</span></div>
+      <div><span data-i18n="reply-date">Date:</span> <span>March 24, 2026 — 14:59 GMT+9</span></div>
     </div>
     <div class="reply-block">
       <div class="reply-body">
@@ -447,60 +475,60 @@
         Finally, please kindly note that this support service is dedicated to addressing inquiries about the game Pokémon Masters EX only and that we are unable to offer assistance for other Pokémon games or services. For inquiries about any other Pokémon games or services, visit the <a href="https://support.pokemon.com/hc/en-us" target="_blank">Official Pokémon Support page</a>.<br><br>
         Best regards,<br>Pokémon Masters Support
       </div>
-      <div class="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
+      <div class="reply-verdict" data-i18n="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
     </div>
   </section>
 
   <!-- POSSIBLE REASONS -->
   <section style="display:none">
-    <div class="section-label">Possible Reasons</div>
+    <div class="section-label" data-i18n="label-reasons">Possible Reasons</div>
     <div class="reasons-list">
-      <div class="reason-item"><div class="reason-num">01</div><div class="reason-text"><strong>Regulatory caution</strong> — Switzerland is not in the EU/EEA; gacha/loot box mechanics may face uncertainty under Swiss gambling or consumer protection laws.</div></div>
-      <div class="reason-item"><div class="reason-num">02</div><div class="reason-text"><strong>Google Play opt-in</strong> — Developers must explicitly add each country on Google Play, while App Store defaults tend to be broader.</div></div>
-      <div class="reason-item"><div class="reason-num">03</div><div class="reason-text"><strong>Small market</strong> — Switzerland has ~9 million people with 3 languages; cost-benefit may not justify compliance effort.</div></div>
-      <div class="reason-item"><div class="reason-num">04</div><div class="reason-text"><strong>Different publishing pipelines</strong> — iOS and Android versions may be handled by different internal teams or legal entities.</div></div>
-      <div class="reason-item"><div class="reason-num">05</div><div class="reason-text"><strong>Tax/currency complexity</strong> — Switzerland uses CHF, not EUR; payment processing setup may have been deprioritized.</div></div>
-      <div class="reason-item"><div class="reason-num">06</div><div class="reason-text"><strong>Age rating / content classification</strong> — Swiss-specific IARC ratings may not have been submitted for Google Play.</div></div>
-      <div class="reason-item"><div class="reason-num">07</div><div class="reason-text"><strong>Historical inertia</strong> — Once excluded at launch, nobody prioritized fixing it.</div></div>
-      <div class="reason-item"><div class="reason-num">08</div><div class="reason-text"><strong>Niantic exception</strong> — Pokémon GO (published by Niantic, not through TPC's usual pipeline) works fine, suggesting the issue is specific to how TPC/DeNA/TiMi handle Google Play distribution.</div></div>
+      <div class="reason-item"><div class="reason-num">01</div><div class="reason-text" data-i18n="reason-1"><strong>Regulatory caution</strong> — Switzerland is not in the EU/EEA; gacha/loot box mechanics may face uncertainty under Swiss gambling or consumer protection laws.</div></div>
+      <div class="reason-item"><div class="reason-num">02</div><div class="reason-text" data-i18n="reason-2"><strong>Google Play opt-in</strong> — Developers must explicitly add each country on Google Play, while App Store defaults tend to be broader.</div></div>
+      <div class="reason-item"><div class="reason-num">03</div><div class="reason-text" data-i18n="reason-3"><strong>Small market</strong> — Switzerland has ~9 million people with 3 languages; cost-benefit may not justify compliance effort.</div></div>
+      <div class="reason-item"><div class="reason-num">04</div><div class="reason-text" data-i18n="reason-4"><strong>Different publishing pipelines</strong> — iOS and Android versions may be handled by different internal teams or legal entities.</div></div>
+      <div class="reason-item"><div class="reason-num">05</div><div class="reason-text" data-i18n="reason-5"><strong>Tax/currency complexity</strong> — Switzerland uses CHF, not EUR; payment processing setup may have been deprioritized.</div></div>
+      <div class="reason-item"><div class="reason-num">06</div><div class="reason-text" data-i18n="reason-6"><strong>Age rating / content classification</strong> — Swiss-specific IARC ratings may not have been submitted for Google Play.</div></div>
+      <div class="reason-item"><div class="reason-num">07</div><div class="reason-text" data-i18n="reason-7"><strong>Historical inertia</strong> — Once excluded at launch, nobody prioritized fixing it.</div></div>
+      <div class="reason-item"><div class="reason-num">08</div><div class="reason-text" data-i18n="reason-8"><strong>Niantic exception</strong> — Pokémon GO (published by Niantic, not through TPC's usual pipeline) works fine, suggesting the issue is specific to how TPC/DeNA/TiMi handle Google Play distribution.</div></div>
     </div>
   </section>
 
   <!-- PROGRESS -->
   <section>
-    <div class="section-label">Actions Taken &amp; Next Steps</div>
+    <div class="section-label" data-i18n="label-progress">Actions Taken &amp; Next Steps</div>
     <div class="progress-cols">
       <div class="progress-box">
-        <h3>Completed</h3>
+        <h3 data-i18n="h3-completed">Completed</h3>
         <ul class="check-list">
-          <li class="done"><span class="icon"></span>Identified the problem and compiled list of affected games</li>
-          <li class="done"><span class="icon"></span>Researched possible reasons for the exclusion</li>
-          <li class="done"><span class="icon"></span>Built a list of contacts across developers, publishers, tournament organizers</li>
-          <li class="done"><span class="icon"></span>Emailed DeNA game support (support@pokemonmasters-game.com)</li>
-          <li class="done"><span class="icon"></span>Emailed DeNA corporate (dena_corp_info@dena.com)</li>
-          <li class="done"><span class="icon"></span>Emailed Shivam / Unity Clash founder (shivamprod09@gmail.com)</li>
-          <li class="done"><span class="icon"></span>Received reply from DeNA game support — no Android release planned for Switzerland</li>
-          <li class="done"><span class="icon"></span>Emailed TPC Intl. European PR (pokemon@msm.digital)</li>
-          <li class="done"><span class="icon"></span>Emailed Hope &amp; Glory PR — TPC European PR agency (pokemoneu@hopeandglorypr.com)</li>
-          <li class="done"><span class="icon"></span>Submitted Level Infinite press form — GSA region (press.levelinfinite.com/Site/Contact)</li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-1">Identified the problem and compiled list of affected games</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-2">Researched possible reasons for the exclusion</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-3">Built a list of contacts across developers, publishers, tournament organizers</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-4">Emailed DeNA game support (support@pokemonmasters-game.com)</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-5">Emailed DeNA corporate (dena_corp_info@dena.com)</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-6">Emailed Shivam / Unity Clash founder (shivamprod09@gmail.com)</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-7">Received reply from DeNA game support — no Android release planned for Switzerland</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-8">Emailed TPC Intl. European PR (pokemon@msm.digital)</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-9">Emailed Hope &amp; Glory PR — TPC European PR agency (pokemoneu@hopeandglorypr.com)</span></li>
+          <li class="done"><span class="icon"></span><span data-i18n="done-10">Submitted Level Infinite press form — GSA region (press.levelinfinite.com/Site/Contact)</span></li>
         </ul>
       </div>
       <div class="progress-box">
-        <h3>Still Open</h3>
+        <h3 data-i18n="h3-open">Still Open</h3>
         <ul class="check-list">
-          <li class="waiting"><span class="icon"></span>Waiting on replies from DeNA corporate &amp; Unity Clash</li>
-          <li class="waiting"><span class="icon"></span>Waiting on reply from TPC Intl. European PR (pokemon@msm.digital)</li>
-          <li class="waiting"><span class="icon"></span>The Pokémon Company Intl. support form — cannot create account; contacted support to resolve account creation issue</li>
-          <li class="waiting"><span class="icon"></span>Waiting on reply from Hope &amp; Glory PR (pokemoneu@hopeandglorypr.com)</li>
-          <li class="waiting"><span class="icon"></span>Waiting on reply from Level Infinite press form GSA region</li>
-          <li class="todo"><span class="icon"></span>Contact DeNA press (dena.com/intl/contact/press) — separate from corporate email already sent</li>
-          <li class="todo"><span class="icon"></span>Post in Pokémon UNITE DEUTSCH Discord (3,500+ DACH members) — surface other affected Swiss players</li>
-          <li class="todo"><span class="icon"></span>Contact Alpine League (alpineleague.gg) — Swiss esports platform, likely has organizer connections</li>
-          <li class="todo"><span class="icon"></span>Pitch story to Mein-MMO — most relevant German outlet for mobile Pokémon coverage</li>
-          <li class="todo"><span class="icon"></span>Reach out to @PokemonUNITE / @UniteEsports on X</li>
-          <li class="todo"><span class="icon"></span>Post on r/PokemonUnite or r/Switzerland</li>
-          <li class="todo"><span class="icon"></span>Contact Swiss gaming journalists</li>
-          <li class="todo"><span class="icon"></span>Consider petition or social media campaign</li>
+          <li class="waiting"><span class="icon"></span><span data-i18n="open-1">Waiting on replies from DeNA corporate &amp; Unity Clash</span></li>
+          <li class="waiting"><span class="icon"></span><span data-i18n="open-2">Waiting on reply from TPC Intl. European PR (pokemon@msm.digital)</span></li>
+          <li class="waiting"><span class="icon"></span><span data-i18n="open-3">The Pokémon Company Intl. support form — cannot create account; contacted support to resolve account creation issue</span></li>
+          <li class="waiting"><span class="icon"></span><span data-i18n="open-4">Waiting on reply from Hope &amp; Glory PR (pokemoneu@hopeandglorypr.com)</span></li>
+          <li class="waiting"><span class="icon"></span><span data-i18n="open-5">Waiting on reply from Level Infinite press form GSA region</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-6">Contact DeNA press (dena.com/intl/contact/press) — separate from corporate email already sent</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-7">Post in Pokémon UNITE DEUTSCH Discord (3,500+ DACH members) — surface other affected Swiss players</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-8">Contact Alpine League (alpineleague.gg) — Swiss esports platform, likely has organizer connections</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-9">Pitch story to Mein-MMO — most relevant German outlet for mobile Pokémon coverage</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-10">Reach out to @PokemonUNITE / @UniteEsports on X</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-11">Post on r/PokemonUnite or r/Switzerland</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-12">Contact Swiss gaming journalists</span></li>
+          <li class="todo"><span class="icon"></span><span data-i18n="open-13">Consider petition or social media campaign</span></li>
         </ul>
       </div>
     </div>
@@ -508,142 +536,142 @@
 
   <!-- CONTACT TABLE -->
   <section>
-    <div class="section-label">Contact List</div>
+    <div class="section-label" data-i18n="label-contacts">Contact List</div>
 
-    <h2 style="font-size:18px; margin-bottom:12px; color:var(--muted);">Direct Contacts</h2>
+    <h2 style="font-size:18px; margin-bottom:12px; color:var(--muted);" data-i18n="h2-direct">Direct Contacts</h2>
     <div style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 32px;">
       <table class="contact-table">
         <thead>
           <tr>
             <th>#</th>
-            <th>Contact</th>
-            <th>Type</th>
-            <th>Status</th>
+            <th data-i18n="th-contact">Contact</th>
+            <th data-i18n="th-type">Type</th>
+            <th data-i18n="th-status">Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>1</td>
             <td><a href="mailto:support@pokemonmasters-game.com">support@pokemonmasters-game.com</a></td>
-            <td>DeNA game support</td>
-            <td><span class="badge replied">↩ Replied</span></td>
+            <td data-i18n="type-1">DeNA game support</td>
+            <td><span class="badge replied" data-i18n="badge-replied">↩ Replied</span></td>
           </tr>
           <tr>
             <td>2</td>
             <td><a href="mailto:dena_corp_info@dena.com">dena_corp_info@dena.com</a></td>
-            <td>DeNA corporate</td>
-            <td><span class="badge waiting">⏳ Waiting</span></td>
+            <td data-i18n="type-2">DeNA corporate</td>
+            <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>3</td>
             <td><a href="mailto:shivamprod09@gmail.com">shivamprod09@gmail.com</a></td>
-            <td>Shivam, Unity Clash founder</td>
-            <td><span class="badge waiting">⏳ Waiting</span></td>
+            <td data-i18n="type-3">Shivam, Unity Clash founder</td>
+            <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>4</td>
             <td><a href="https://support.pokemon.com/hc/en-us/requests/new" target="_blank">support.pokemon.com/…/new</a></td>
-            <td>The Pokémon Company Intl. support form</td>
-            <td><span class="badge waiting">⏳ Waiting on account</span></td>
+            <td data-i18n="type-4">The Pokémon Company Intl. support form</td>
+            <td><span class="badge waiting" data-i18n="badge-waiting-acct">⏳ Waiting on account</span></td>
           </tr>
           <tr>
             <td>5</td>
             <td><a href="https://press.levelinfinite.com/en/TiMi-Studio-Group" target="_blank">press.levelinfinite.com</a></td>
-            <td>TiMi Studios / Level Infinite press</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-5">TiMi Studios / Level Infinite press</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>6</td>
             <td><a href="mailto:pokemon@msm.digital">pokemon@msm.digital</a></td>
-            <td>The Pokémon Company Intl. — European PR (via pokemon.gamespress.com)</td>
-            <td><span class="badge waiting">⏳ Waiting</span></td>
+            <td data-i18n="type-6">The Pokémon Company Intl. — European PR (via pokemon.gamespress.com)</td>
+            <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>7</td>
             <td><a href="https://dena.com/intl/contact/press" target="_blank">dena.com/intl/contact/press</a></td>
-            <td>DeNA press contact</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-7">DeNA press contact</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>8</td>
             <td><a href="https://www.alpineleague.gg" target="_blank">alpineleague.gg</a></td>
-            <td>Alpine League — Swiss esports platform</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-8">Alpine League — Swiss esports platform</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>9</td>
             <td><a href="https://mein-mmo.de" target="_blank">mein-mmo.de</a></td>
-            <td>Mein-MMO — German mobile/Pokémon gaming outlet</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-9">Mein-MMO — German mobile/Pokémon gaming outlet</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>10</td>
             <td><a href="mailto:pokemoneu@hopeandglorypr.com">pokemoneu@hopeandglorypr.com</a></td>
-            <td>Hope &amp; Glory PR — TPC European PR agency</td>
-            <td><span class="badge waiting">⏳ Waiting</span></td>
+            <td data-i18n="type-10">Hope &amp; Glory PR — TPC European PR agency</td>
+            <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>11</td>
             <td><a href="https://press.levelinfinite.com/Site/Contact" target="_blank">press.levelinfinite.com/Site/Contact</a></td>
-            <td>Level Infinite press form (GSA region)</td>
-            <td><span class="badge waiting">⏳ Waiting</span></td>
+            <td data-i18n="type-11">Level Infinite press form (GSA region)</td>
+            <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>12</td>
             <td><a href="https://x.com/snowwpoints" target="_blank">@Snowwpoints</a></td>
-            <td>Snow — Swiss UNITE player, 2024 European Cup champion</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-12">Snow — Swiss UNITE player, 2024 European Cup champion</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>13</td>
             <td><a href="https://x.com/Zervas_" target="_blank">@Zervas_</a></td>
-            <td>Zervas (Fabio Bügler) — Switzerland's top UNITE earner, streamer</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-13">Zervas (Fabio Bügler) — Switzerland's top UNITE earner, streamer</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>14</td>
             <td><a href="https://x.com/Ghatlue" target="_blank">@Ghatlue</a></td>
-            <td>Ghatlue — Top German UNITE player, Unity Clash co-host (~7k followers)</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-14">Ghatlue — Top German UNITE player, Unity Clash co-host (~7k followers)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>15</td>
             <td><a href="https://x.com/TabbyTendo" target="_blank">@TabbyTendo</a></td>
-            <td>TabbyTendo — Admin of #PKDE Discord (DE/AT/CH Pokémon community)</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-15">TabbyTendo — Admin of #PKDE Discord (DE/AT/CH Pokémon community)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>16</td>
             <td><a href="https://x.com/pChalTV" target="_blank">@pChalTV</a></td>
-            <td>pChal — Biggest German Pokémon creator (941k YouTube, 328k Twitch)</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-16">pChal — Biggest German Pokémon creator (941k YouTube, 328k Twitch)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>17</td>
             <td><a href="https://x.com/domtendo" target="_blank">@Domtendo</a></td>
-            <td>Domtendo — Top German Nintendo/Pokémon creator (1.6M YouTube)</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-17">Domtendo — Top German Nintendo/Pokémon creator (1.6M YouTube)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
             <td>18</td>
             <td><a href="https://www.ntower.de" target="_blank">ntower.de</a></td>
-            <td>ntower — Germany's leading Nintendo outlet, covers Pokémon</td>
-            <td><span class="badge unsent">✗ Not contacted</span></td>
+            <td data-i18n="type-18">ntower — Germany's leading Nintendo outlet, covers Pokémon</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <h2 style="font-size:18px; margin-bottom:12px; color:var(--muted);">Communities &amp; Groups</h2>
+    <h2 style="font-size:18px; margin-bottom:12px; color:var(--muted);" data-i18n="h2-communities">Communities &amp; Groups</h2>
     <div style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;">
       <table class="contact-table">
         <thead>
           <tr>
             <th>#</th>
-            <th>Channel</th>
-            <th>Platform</th>
-            <th>Description</th>
-            <th>Status</th>
+            <th data-i18n="th-channel">Channel</th>
+            <th data-i18n="th-platform">Platform</th>
+            <th data-i18n="th-description">Description</th>
+            <th data-i18n="th-status">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -651,113 +679,113 @@
             <td>1</td>
             <td><a href="https://discord.com/invite/M4rjnFd7kr" target="_blank">UNITE DEUTSCH</a></td>
             <td>Discord</td>
-            <td>Pokémon UNITE DACH community (3,500+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-1">Pokémon UNITE DACH community (3,500+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>2</td>
             <td><a href="https://discord.com/invite/pokemonunite" target="_blank">r/PokemonUnite</a></td>
             <td>Discord</td>
-            <td>Largest UNITE Discord (76,600+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-2">Largest UNITE Discord (76,600+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>3</td>
             <td><a href="https://discord.com/invite/tkpokemonunite" target="_blank">Pokemon Uniters</a></td>
             <td>Discord</td>
-            <td>Competitive UNITE community (44,600+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-3">Competitive UNITE community (44,600+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>4</td>
             <td><a href="https://discord.com/invite/pokemonmasters" target="_blank">r/PokemonMasters</a></td>
             <td>Discord</td>
-            <td>Masters EX community Discord (28,600+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-4">Masters EX community Discord (28,600+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>5</td>
             <td><a href="https://discord.com/invite/pokemonsleep" target="_blank">Pokémon Sleep</a></td>
             <td>Discord</td>
-            <td>Pokémon Sleep community (18,000+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-5">Pokémon Sleep community (18,000+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>6</td>
             <td><a href="https://discord.com/invite/nnpRQkh4t6" target="_blank">#PKDE (DACH)</a></td>
             <td>Discord</td>
-            <td>German/Austrian/Swiss Pokémon community (9,600+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-6">German/Austrian/Swiss Pokémon community (9,600+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>7</td>
             <td><a href="https://www.reddit.com/r/PokemonUnite/" target="_blank">r/PokemonUnite</a></td>
             <td>Reddit</td>
-            <td>Main UNITE subreddit (188,000+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-7">Main UNITE subreddit (188,000+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>8</td>
             <td><a href="https://www.reddit.com/r/PokemonMasters/" target="_blank">r/PokemonMasters</a></td>
             <td>Reddit</td>
-            <td>Masters EX subreddit (81,600+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-8">Masters EX subreddit (81,600+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>9</td>
             <td><a href="https://www.reddit.com/r/PokemonHome/" target="_blank">r/PokemonHome</a></td>
             <td>Reddit</td>
-            <td>Pokémon HOME subreddit (54,200+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-9">Pokémon HOME subreddit (54,200+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>10</td>
             <td><a href="https://www.reddit.com/r/PokemonSleep/" target="_blank">r/PokemonSleep</a></td>
             <td>Reddit</td>
-            <td>Pokémon Sleep subreddit (43,600+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-10">Pokémon Sleep subreddit (43,600+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>11</td>
             <td><a href="https://www.reddit.com/r/PokemonCafeMix/" target="_blank">r/PokemonCafeMix</a></td>
             <td>Reddit</td>
-            <td>Café ReMix subreddit (6,900+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-11">Café ReMix subreddit (6,900+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>12</td>
             <td><a href="https://www.reddit.com/r/pokemon/" target="_blank">r/pokemon</a></td>
             <td>Reddit</td>
-            <td>Largest general Pokémon subreddit (4.5M+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-12">Largest general Pokémon subreddit (4.5M+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>13</td>
             <td><a href="https://www.reddit.com/r/Switzerland/" target="_blank">r/Switzerland</a></td>
             <td>Reddit</td>
-            <td>Main Swiss community (370,000+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-13">Main Swiss community (370,000+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>14</td>
             <td><a href="https://www.reddit.com/r/de/" target="_blank">r/de</a></td>
             <td>Reddit</td>
-            <td>Largest German-speaking subreddit, covers DACH (1.6M+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-14">Largest German-speaking subreddit, covers DACH (1.6M+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>15</td>
             <td><a href="https://www.reddit.com/r/AndroidGaming/" target="_blank">r/AndroidGaming</a></td>
             <td>Reddit</td>
-            <td>Android gaming community (284,000+ members)</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-15">Android gaming community (284,000+ members)</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
           <tr>
             <td>16</td>
             <td><a href="https://community.pokemon.com/en-us/categories/feedback-center/" target="_blank">Pokémon Community Forums</a></td>
             <td>Forum</td>
-            <td>Official TPC feedback center — mobile games section</td>
-            <td><span class="badge unsent">✗ Not posted</span></td>
+            <td data-i18n="desc-16">Official TPC feedback center — mobile games section</td>
+            <td><span class="badge unsent" data-i18n="badge-unsent-post">✗ Not posted</span></td>
           </tr>
         </tbody>
       </table>
@@ -765,5 +793,219 @@
   </section>
 
 </div>
+
+<script>
+const T = {
+  en: {
+    'hero-tag': 'Open Investigation · Android · Switzerland',
+    'h1': 'Pokémon Games Missing from<br><span>Swiss Google Play</span>',
+    'hero-sub': 'Multiple Pokémon mobile games are available on the iOS App Store in Switzerland but absent from the Google Play Store — with no public explanation from any involved party.',
+    'updated': 'Last updated: March 24, 2026',
+    'label-irony': 'Key Irony',
+    'callout-irony': '<strong>Team Switzerland won the 2024 Pokémon UNITE European Cup</strong> (organized by Unity Clash), beating Germany in the finals — yet Pokémon UNITE is still not available on Android in their own country.',
+    'label-affected': 'Affected Games',
+    'status-broken': '❌ Android unavailable',
+    'status-works': '✓ Works on both',
+    'label-replies': 'Replies Received',
+    'reply-from': 'From:',
+    'reply-date': 'Date:',
+    'reply-verdict': '⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."',
+    'label-reasons': 'Possible Reasons',
+    'reason-1': '<strong>Regulatory caution</strong> — Switzerland is not in the EU/EEA; gacha/loot box mechanics may face uncertainty under Swiss gambling or consumer protection laws.',
+    'reason-2': '<strong>Google Play opt-in</strong> — Developers must explicitly add each country on Google Play, while App Store defaults tend to be broader.',
+    'reason-3': '<strong>Small market</strong> — Switzerland has ~9 million people with 3 languages; cost-benefit may not justify compliance effort.',
+    'reason-4': '<strong>Different publishing pipelines</strong> — iOS and Android versions may be handled by different internal teams or legal entities.',
+    'reason-5': '<strong>Tax/currency complexity</strong> — Switzerland uses CHF, not EUR; payment processing setup may have been deprioritized.',
+    'reason-6': '<strong>Age rating / content classification</strong> — Swiss-specific IARC ratings may not have been submitted for Google Play.',
+    'reason-7': '<strong>Historical inertia</strong> — Once excluded at launch, nobody prioritized fixing it.',
+    'reason-8': '<strong>Niantic exception</strong> — Pokémon GO (published by Niantic, not through TPC\'s usual pipeline) works fine, suggesting the issue is specific to how TPC/DeNA/TiMi handle Google Play distribution.',
+    'label-progress': 'Actions Taken &amp; Next Steps',
+    'h3-completed': 'Completed',
+    'h3-open': 'Still Open',
+    'done-1': 'Identified the problem and compiled list of affected games',
+    'done-2': 'Researched possible reasons for the exclusion',
+    'done-3': 'Built a list of contacts across developers, publishers, tournament organizers',
+    'done-4': 'Emailed DeNA game support (support@pokemonmasters-game.com)',
+    'done-5': 'Emailed DeNA corporate (dena_corp_info@dena.com)',
+    'done-6': 'Emailed Shivam / Unity Clash founder (shivamprod09@gmail.com)',
+    'done-7': 'Received reply from DeNA game support — no Android release planned for Switzerland',
+    'done-8': 'Emailed TPC Intl. European PR (pokemon@msm.digital)',
+    'done-9': 'Emailed Hope &amp; Glory PR — TPC European PR agency (pokemoneu@hopeandglorypr.com)',
+    'done-10': 'Submitted Level Infinite press form — GSA region (press.levelinfinite.com/Site/Contact)',
+    'open-1': 'Waiting on replies from DeNA corporate &amp; Unity Clash',
+    'open-2': 'Waiting on reply from TPC Intl. European PR (pokemon@msm.digital)',
+    'open-3': 'The Pokémon Company Intl. support form — cannot create account; contacted support to resolve account creation issue',
+    'open-4': 'Waiting on reply from Hope &amp; Glory PR (pokemoneu@hopeandglorypr.com)',
+    'open-5': 'Waiting on reply from Level Infinite press form GSA region',
+    'open-6': 'Contact DeNA press (dena.com/intl/contact/press) — separate from corporate email already sent',
+    'open-7': 'Post in Pokémon UNITE DEUTSCH Discord (3,500+ DACH members) — surface other affected Swiss players',
+    'open-8': 'Contact Alpine League (alpineleague.gg) — Swiss esports platform, likely has organizer connections',
+    'open-9': 'Pitch story to Mein-MMO — most relevant German outlet for mobile Pokémon coverage',
+    'open-10': 'Reach out to @PokemonUNITE / @UniteEsports on X',
+    'open-11': 'Post on r/PokemonUnite or r/Switzerland',
+    'open-12': 'Contact Swiss gaming journalists',
+    'open-13': 'Consider petition or social media campaign',
+    'label-contacts': 'Contact List',
+    'h2-direct': 'Direct Contacts',
+    'h2-communities': 'Communities &amp; Groups',
+    'th-contact': 'Contact',
+    'th-type': 'Type',
+    'th-status': 'Status',
+    'th-channel': 'Channel',
+    'th-platform': 'Platform',
+    'th-description': 'Description',
+    'badge-replied': '↩ Replied',
+    'badge-waiting': '⏳ Waiting',
+    'badge-waiting-acct': '⏳ Waiting on account',
+    'badge-unsent': '✗ Not contacted',
+    'badge-unsent-post': '✗ Not posted',
+    'type-1': 'DeNA game support',
+    'type-2': 'DeNA corporate',
+    'type-3': 'Shivam, Unity Clash founder',
+    'type-4': 'The Pokémon Company Intl. support form',
+    'type-5': 'TiMi Studios / Level Infinite press',
+    'type-6': 'The Pokémon Company Intl. — European PR (via pokemon.gamespress.com)',
+    'type-7': 'DeNA press contact',
+    'type-8': 'Alpine League — Swiss esports platform',
+    'type-9': 'Mein-MMO — German mobile/Pokémon gaming outlet',
+    'type-10': 'Hope &amp; Glory PR — TPC European PR agency',
+    'type-11': 'Level Infinite press form (GSA region)',
+    'type-12': 'Snow — Swiss UNITE player, 2024 European Cup champion',
+    'type-13': 'Zervas (Fabio Bügler) — Switzerland\'s top UNITE earner, streamer',
+    'type-14': 'Ghatlue — Top German UNITE player, Unity Clash co-host (~7k followers)',
+    'type-15': 'TabbyTendo — Admin of #PKDE Discord (DE/AT/CH Pokémon community)',
+    'type-16': 'pChal — Biggest German Pokémon creator (941k YouTube, 328k Twitch)',
+    'type-17': 'Domtendo — Top German Nintendo/Pokémon creator (1.6M YouTube)',
+    'type-18': 'ntower — Germany\'s leading Nintendo outlet, covers Pokémon',
+    'desc-1': 'Pokémon UNITE DACH community (3,500+ members)',
+    'desc-2': 'Largest UNITE Discord (76,600+ members)',
+    'desc-3': 'Competitive UNITE community (44,600+ members)',
+    'desc-4': 'Masters EX community Discord (28,600+ members)',
+    'desc-5': 'Pokémon Sleep community (18,000+ members)',
+    'desc-6': 'German/Austrian/Swiss Pokémon community (9,600+ members)',
+    'desc-7': 'Main UNITE subreddit (188,000+ members)',
+    'desc-8': 'Masters EX subreddit (81,600+ members)',
+    'desc-9': 'Pokémon HOME subreddit (54,200+ members)',
+    'desc-10': 'Pokémon Sleep subreddit (43,600+ members)',
+    'desc-11': 'Café ReMix subreddit (6,900+ members)',
+    'desc-12': 'Largest general Pokémon subreddit (4.5M+ members)',
+    'desc-13': 'Main Swiss community (370,000+ members)',
+    'desc-14': 'Largest German-speaking subreddit, covers DACH (1.6M+ members)',
+    'desc-15': 'Android gaming community (284,000+ members)',
+    'desc-16': 'Official TPC feedback center — mobile games section',
+  },
+  de: {
+    'hero-tag': 'Offene Untersuchung · Android · Schweiz',
+    'h1': 'Pokémon-Spiele fehlen im<br><span>Schweizer Google Play</span>',
+    'hero-sub': 'Mehrere Pokémon-Mobilspiele sind im Schweizer iOS App Store verfügbar, fehlen aber im Google Play Store – ohne öffentliche Erklärung seitens der Beteiligten.',
+    'updated': 'Zuletzt aktualisiert: 24. März 2026',
+    'label-irony': 'Kern-Ironie',
+    'callout-irony': '<strong>Team Schweiz gewann den Pokémon UNITE European Cup 2024</strong> (organisiert von Unity Clash) und besiegte Deutschland im Finale – dennoch ist Pokémon UNITE im eigenen Land weiterhin nicht auf Android verfügbar.',
+    'label-affected': 'Betroffene Spiele',
+    'status-broken': '❌ Android nicht verfügbar',
+    'status-works': '✓ Auf beiden verfügbar',
+    'label-replies': 'Erhaltene Antworten',
+    'reply-from': 'Von:',
+    'reply-date': 'Datum:',
+    'reply-verdict': '⚠ Bestätigt: Keine Android-Veröffentlichung für die Schweiz geplant. Kein Grund angegeben. Feedback wurde «ans Team weitergeleitet».',
+    'label-reasons': 'Mögliche Gründe',
+    'reason-1': '<strong>Regulatorische Vorsicht</strong> — Die Schweiz ist nicht Teil der EU/des EWR; Gacha/Lootbox-Mechaniken könnten nach Schweizer Glücksspiel- oder Konsumentenschutzrecht unsicher sein.',
+    'reason-2': '<strong>Google Play Opt-in</strong> — Entwickler müssen jedes Land auf Google Play explizit freischalten, während App Store-Standardeinstellungen tendenziell breiter sind.',
+    'reason-3': '<strong>Kleiner Markt</strong> — Die Schweiz hat ~9 Millionen Einwohner und 3 Sprachen; das Kosten-Nutzen-Verhältnis für den Compliance-Aufwand ist möglicherweise nicht attraktiv.',
+    'reason-4': '<strong>Unterschiedliche Publishing-Pipelines</strong> — iOS- und Android-Versionen können von verschiedenen internen Teams oder juristischen Einheiten verwaltet werden.',
+    'reason-5': '<strong>Steuer-/Währungskomplexität</strong> — Die Schweiz nutzt CHF, nicht EUR; die Zahlungsabwicklung wurde möglicherweise zurückgestellt.',
+    'reason-6': '<strong>Alterseinstufung / Inhaltskategorisierung</strong> — Schweizspezifische IARC-Bewertungen wurden möglicherweise nicht für Google Play eingereicht.',
+    'reason-7': '<strong>Historische Trägheit</strong> — Einmal beim Launch ausgeschlossen, hat niemand die Korrektur priorisiert.',
+    'reason-8': '<strong>Niantic-Ausnahme</strong> — Pokémon GO (von Niantic veröffentlicht, nicht über TPCs übliche Pipeline) funktioniert einwandfrei – das Problem scheint spezifisch für TPCs/DeNAs/TiMis Google Play Distribution zu sein.',
+    'label-progress': 'Unternommene Schritte &amp; Nächstes',
+    'h3-completed': 'Abgeschlossen',
+    'h3-open': 'Noch offen',
+    'done-1': 'Problem identifiziert und Liste der betroffenen Spiele erstellt',
+    'done-2': 'Mögliche Gründe für den Ausschluss recherchiert',
+    'done-3': 'Kontaktliste bei Entwicklern, Publishern und Turnierveranstaltern zusammengestellt',
+    'done-4': 'E-Mail an DeNA-Spielsupport geschickt (support@pokemonmasters-game.com)',
+    'done-5': 'E-Mail an DeNA-Unternehmenszentrale geschickt (dena_corp_info@dena.com)',
+    'done-6': 'E-Mail an Shivam / Unity-Clash-Gründer geschickt (shivamprod09@gmail.com)',
+    'done-7': 'Antwort von DeNA-Spielsupport erhalten – keine Android-Veröffentlichung für die Schweiz geplant',
+    'done-8': 'E-Mail an TPC Intl. Europa-PR geschickt (pokemon@msm.digital)',
+    'done-9': 'E-Mail an Hope &amp; Glory PR – TPC-Europa-PR-Agentur geschickt (pokemoneu@hopeandglorypr.com)',
+    'done-10': 'Level Infinite Presseformular ausgefüllt – Region GSA (press.levelinfinite.com/Site/Contact)',
+    'open-1': 'Warte auf Antworten von DeNA-Unternehmen &amp; Unity Clash',
+    'open-2': 'Warte auf Antwort von TPC Intl. Europa-PR (pokemon@msm.digital)',
+    'open-3': 'Pokémon Company Intl. Supportformular – Konto konnte nicht erstellt werden; Support kontaktiert',
+    'open-4': 'Warte auf Antwort von Hope &amp; Glory PR (pokemoneu@hopeandglorypr.com)',
+    'open-5': 'Warte auf Antwort vom Level Infinite Presseformular Region GSA',
+    'open-6': 'DeNA-Presse kontaktieren (dena.com/intl/contact/press) – getrennt von bereits gesendeter Unternehmens-E-Mail',
+    'open-7': 'Im Pokémon UNITE DEUTSCH Discord posten (3.500+ DACH-Mitglieder) – andere betroffene Schweizer Spieler finden',
+    'open-8': 'Alpine League kontaktieren (alpineleague.gg) – Schweizer Esports-Plattform',
+    'open-9': 'Story an Mein-MMO pitchen – relevantestes deutsches Outlet für mobile Pokémon-Berichterstattung',
+    'open-10': '@PokemonUNITE / @UniteEsports auf X kontaktieren',
+    'open-11': 'Auf r/PokemonUnite oder r/Switzerland posten',
+    'open-12': 'Schweizer Gaming-Journalisten kontaktieren',
+    'open-13': 'Petition oder Social-Media-Kampagne erwägen',
+    'label-contacts': 'Kontaktliste',
+    'h2-direct': 'Direkte Kontakte',
+    'h2-communities': 'Communitys &amp; Gruppen',
+    'th-contact': 'Kontakt',
+    'th-type': 'Art',
+    'th-status': 'Status',
+    'th-channel': 'Kanal',
+    'th-platform': 'Plattform',
+    'th-description': 'Beschreibung',
+    'badge-replied': '↩ Geantwortet',
+    'badge-waiting': '⏳ Wartend',
+    'badge-waiting-acct': '⏳ Warte auf Konto',
+    'badge-unsent': '✗ Nicht kontaktiert',
+    'badge-unsent-post': '✗ Nicht gepostet',
+    'type-1': 'DeNA-Spielsupport',
+    'type-2': 'DeNA-Unternehmenszentrale',
+    'type-3': 'Shivam, Unity-Clash-Gründer',
+    'type-4': 'The Pokémon Company Intl. Supportformular',
+    'type-5': 'TiMi Studios / Level Infinite Presse',
+    'type-6': 'The Pokémon Company Intl. – Europa-PR (via pokemon.gamespress.com)',
+    'type-7': 'DeNA-Pressekontakt',
+    'type-8': 'Alpine League – Schweizer Esports-Plattform',
+    'type-9': 'Mein-MMO – Deutsches Pokémon-Gaming-Outlet',
+    'type-10': 'Hope &amp; Glory PR – TPC-Europa-PR-Agentur',
+    'type-11': 'Level Infinite Presseformular (Region GSA)',
+    'type-12': 'Snow – Schweizer UNITE-Spieler, Europacup-Champion 2024',
+    'type-13': 'Zervas (Fabio Bügler) – Schweizer Top-UNITE-Spieler, Streamer',
+    'type-14': 'Ghatlue – Deutscher Top-UNITE-Spieler, Unity-Clash-Co-Host (~7k Follower)',
+    'type-15': 'TabbyTendo – Admin des #PKDE Discord (DE/AT/CH Pokémon-Community)',
+    'type-16': 'pChal – Grösster deutscher Pokémon-Creator (941k YouTube, 328k Twitch)',
+    'type-17': 'Domtendo – Führender deutscher Nintendo/Pokémon-Creator (1,6 Mio. YouTube)',
+    'type-18': 'ntower – Führendes deutsches Nintendo-Outlet, berichtet über Pokémon',
+    'desc-1': 'Pokémon UNITE DACH-Community (3.500+ Mitglieder)',
+    'desc-2': 'Grösster UNITE Discord (76.600+ Mitglieder)',
+    'desc-3': 'Kompetitive UNITE-Community (44.600+ Mitglieder)',
+    'desc-4': 'Masters EX Community Discord (28.600+ Mitglieder)',
+    'desc-5': 'Pokémon Sleep Community (18.000+ Mitglieder)',
+    'desc-6': 'Deutsch-/Österreichisch-/Schweizerische Pokémon-Community (9.600+ Mitglieder)',
+    'desc-7': 'Haupt-UNITE-Subreddit (188.000+ Mitglieder)',
+    'desc-8': 'Masters EX Subreddit (81.600+ Mitglieder)',
+    'desc-9': 'Pokémon HOME Subreddit (54.200+ Mitglieder)',
+    'desc-10': 'Pokémon Sleep Subreddit (43.600+ Mitglieder)',
+    'desc-11': 'Café ReMix Subreddit (6.900+ Mitglieder)',
+    'desc-12': 'Grösstes allgemeines Pokémon-Subreddit (4,5 Mio.+ Mitglieder)',
+    'desc-13': 'Grösste Schweizer Community (370.000+ Mitglieder)',
+    'desc-14': 'Grösstes deutschsprachiges Subreddit, DACH (1,6 Mio.+ Mitglieder)',
+    'desc-15': 'Android-Gaming-Community (284.000+ Mitglieder)',
+    'desc-16': 'Offizielles TPC Feedback-Center – Bereich Mobile Games',
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+setLang(localStorage.getItem('lang') || 'en');
+</script>
 </body>
 </html>
