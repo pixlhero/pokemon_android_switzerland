@@ -33,7 +33,8 @@
 
   /* HERO — full screen landing */
   .hero {
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     background: linear-gradient(160deg, #0e0f14 0%, #111520 55%, #0a0d18 100%);
     border-bottom: 1px solid var(--border);
     position: relative;
@@ -127,44 +128,6 @@
     max-width: 560px;
     line-height: 1.7;
     margin-bottom: 48px;
-  }
-
-  /* HERO STATS */
-  .hero-stats {
-    display: flex;
-    gap: 0;
-    flex-wrap: wrap;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    max-width: 640px;
-    margin-bottom: 32px;
-  }
-  .hero-stat {
-    flex: 1;
-    min-width: 120px;
-    padding: 20px 24px;
-    border-right: 1px solid var(--border);
-    background: var(--surface);
-    transition: background 0.2s;
-  }
-  .hero-stat:last-child { border-right: none; }
-  .hero-stat:hover { background: var(--surface2); }
-  .hero-stat-num {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .hero-stat-num.red { color: var(--red); }
-  .hero-stat-num.green { color: var(--green); }
-  .hero-stat-num.blue { color: var(--accent2); }
-  .hero-stat-num.yellow { color: var(--accent); }
-  .hero-stat-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 1.4;
   }
 
   .updated {
@@ -415,9 +378,6 @@
   }
   @media (max-width: 600px) {
     .progress-cols { grid-template-columns: 1fr; }
-    .hero-stats { flex-direction: column; }
-    .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
-    .hero-stat:last-child { border-bottom: none; }
     .hero-inner { padding: 80px 24px 40px; }
   }
   .progress-box {
@@ -463,25 +423,6 @@
     <div class="hero-tag" data-i18n="hero-tag">Open Investigation · Android · Switzerland</div>
     <h1 data-i18n="h1">Pokémon Games Missing from<br><span>Swiss Google Play</span></h1>
     <p class="hero-sub" data-i18n="hero-sub">Multiple Pokémon mobile games are available on the iOS App Store in Switzerland but absent from the Google Play Store — with no public explanation from any involved party.</p>
-
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num red">5</div>
-        <div class="hero-stat-label" data-i18n="stat-missing">games missing<br>on Android</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num green">8</div>
-        <div class="hero-stat-label" data-i18n="stat-works">games working<br>on Android</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num blue">1</div>
-        <div class="hero-stat-label" data-i18n="stat-replies">reply<br>received</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num yellow">18</div>
-        <div class="hero-stat-label" data-i18n="stat-contacts">direct contacts<br>identified</div>
-      </div>
-    </div>
 
     <p class="updated" data-i18n="updated">Last updated: March 24, 2026</p>
   </div>
@@ -915,10 +856,6 @@ const T = {
     'h1': 'Pokémon Games Missing from<br><span>Swiss Google Play</span>',
     'hero-sub': 'Multiple Pokémon mobile games are available on the iOS App Store in Switzerland but absent from the Google Play Store — with no public explanation from any involved party.',
     'updated': 'Last updated: March 24, 2026',
-    'stat-missing': 'games missing<br>on Android',
-    'stat-works': 'games working<br>on Android',
-    'stat-replies': 'reply<br>received',
-    'stat-contacts': 'direct contacts<br>identified',
     'scroll-hint': 'scroll to explore ↓',
     'label-irony': 'Key Irony',
     'callout-irony': '<strong>Team Switzerland won the 2024 Pokémon UNITE European Cup</strong> (organized by Unity Clash), beating Germany in the finals — yet Pokémon UNITE is still not available on Android in their own country.',
@@ -1018,10 +955,6 @@ const T = {
     'h1': 'Pokémon-Spiele fehlen im<br><span>Schweizer Google Play</span>',
     'hero-sub': 'Mehrere Pokémon-Mobilspiele sind im Schweizer iOS App Store verfügbar, fehlen aber im Google Play Store – ohne öffentliche Erklärung seitens der Beteiligten.',
     'updated': 'Zuletzt aktualisiert: 24. März 2026',
-    'stat-missing': 'Spiele fehlen<br>auf Android',
-    'stat-works': 'Spiele verfügbar<br>auf Android',
-    'stat-replies': 'Antwort<br>erhalten',
-    'stat-contacts': 'direkte Kontakte<br>identifiziert',
     'scroll-hint': 'scrollen ↓',
     'label-irony': 'Kern-Ironie',
     'callout-irony': '<strong>Team Schweiz gewann den Pokémon UNITE European Cup 2024</strong> (organisiert von Unity Clash) und besiegte Deutschland im Finale – dennoch ist Pokémon UNITE im eigenen Land weiterhin nicht auf Android verfügbar.',
