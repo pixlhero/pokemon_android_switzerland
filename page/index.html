@@ -255,6 +255,11 @@
     color: var(--accent2);
     border: 1px solid rgba(61,125,202,0.35);
   }
+  .badge.waiting {
+    background: rgba(255,203,5,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(255,203,5,0.25);
+  }
 
   /* REPLY BLOCK */
   .reply-block {
@@ -327,6 +332,7 @@
   .check-list li.done .icon::before { content: '✓'; color: var(--green); }
   .check-list li.todo .icon::before { content: '○'; color: var(--muted); }
   .check-list li.error .icon::before { content: '✗'; color: var(--red); }
+  .check-list li.waiting .icon::before { content: '⏳'; color: var(--accent); }
 </style>
 </head>
 <body>
@@ -433,18 +439,18 @@
           <li class="done"><span class="icon"></span>Identified the problem and compiled list of affected games</li>
           <li class="done"><span class="icon"></span>Researched possible reasons for the exclusion</li>
           <li class="done"><span class="icon"></span>Built a list of contacts across developers, publishers, tournament organizers</li>
-          <li class="done"><span class="icon"></span>Emailed DeNA game support (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e794929797889593a797888c828a88898a869493829594ca80868a82c984888a">[email&#160;protected]</a>)</li>
-          <li class="done"><span class="icon"></span>Emailed DeNA corporate (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1377767d724c707c61634c7a7d757c5377767d723d707c7e">[email&#160;protected]</a>)</li>
-          <li class="done"><span class="icon"></span>Emailed Shivam / Unity Clash founder (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afdcc7c6d9cec2dfddc0cb9f96efc8c2cec6c381ccc0c2">[email&#160;protected]</a>)</li>
+          <li class="done"><span class="icon"></span>Emailed DeNA game support (support@pokemonmasters-game.com)</li>
+          <li class="done"><span class="icon"></span>Emailed DeNA corporate (dena_corp_info@dena.com)</li>
+          <li class="done"><span class="icon"></span>Emailed Shivam / Unity Clash founder (shivamprod09@gmail.com)</li>
+          <li class="done"><span class="icon"></span>Received reply from DeNA game support — no Android release planned for Switzerland</li>
         </ul>
       </div>
       <div class="progress-box">
         <h3>Still Open</h3>
         <ul class="check-list">
-          <li class="done"><span class="icon"></span>DeNA game support replied: no Android release planned for Switzerland</li>
-          <li class="todo"><span class="icon"></span>Waiting on replies from DeNA corporate &amp; Unity Clash</li>
-          <li class="error"><span class="icon"></span>The Pokémon Company Intl. support form (had errors)</li>
-          <li class="todo"><span class="icon"></span>Contact TiMi Studios / Level Infinite PR</li>
+          <li class="waiting"><span class="icon"></span>Waiting on replies from DeNA corporate &amp; Unity Clash</li>
+          <li class="error"><span class="icon"></span>The Pokémon Company Intl. support form (had errors — needs retry)</li>
+          <li class="todo"><span class="icon"></span>Contact TiMi Studios / Level Infinite PR directly</li>
           <li class="todo"><span class="icon"></span>Reach out to @PokemonUNITE / @UniteEsports on X</li>
           <li class="todo"><span class="icon"></span>Verify full list of affected games on Android device</li>
           <li class="todo"><span class="icon"></span>Post on r/PokemonUnite or r/Switzerland</li>
@@ -471,21 +477,21 @@
         <tbody>
           <tr>
             <td>1</td>
-            <td><a href="/cdn-cgi/l/email-protection#74070104041b060034041b1f11191b1a1915070011060759131519115a171b19"><span class="__cf_email__" data-cfemail="bccfc9ccccd3cec8fcccd3d7d9d1d3d2d1ddcfc8d9cecf91dbddd1d992dfd3d1">[email&#160;protected]</span></a></td>
+            <td><a href="mailto:support@pokemonmasters-game.com">support@pokemonmasters-game.com</a></td>
             <td>DeNA game support</td>
             <td><span class="badge replied">↩ Replied</span></td>
           </tr>
           <tr>
             <td>2</td>
-            <td><a href="/cdn-cgi/l/email-protection#2b4f4e454a744844595b7442454d446b4f4e454a05484446"><span class="__cf_email__" data-cfemail="36525358576955594446695f58505976525358571855595b">[email&#160;protected]</span></a></td>
+            <td><a href="mailto:dena_corp_info@dena.com">dena_corp_info@dena.com</a></td>
             <td>DeNA corporate</td>
-            <td><span class="badge sent">✓ Sent</span></td>
+            <td><span class="badge waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>3</td>
-            <td><a href="/cdn-cgi/l/email-protection#77041f1e01161a07051813474e37101a161e1b5914181a"><span class="__cf_email__" data-cfemail="05766d6c73646875776a61353c456268646c692b666a68">[email&#160;protected]</span></a></td>
+            <td><a href="mailto:shivamprod09@gmail.com">shivamprod09@gmail.com</a></td>
             <td>Shivam, Unity Clash founder</td>
-            <td><span class="badge sent">✓ Sent</span></td>
+            <td><span class="badge waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
             <td>4</td>
@@ -495,10 +501,21 @@
           </tr>
           <tr>
             <td>5</td>
-            <td><a href="/cdn-cgi/l/email-protection#3c4c4e554a5d5f454d49594f485553524f7c4c535759515352125f5351"><span class="__cf_email__" data-cfemail="2757554e5146445e56524254534e4849546757484c424a48490944484a">[email&#160;protected]</span></a></td>
+            <td><a href="mailto:privacyquestions@pokemon.com">privacyquestions@pokemon.com</a></td>
             <td>The Pokémon Company Intl. (privacy — not ideal)</td>
             <td><span class="badge unsent">✗ Not sent</span></td>
           </tr>
           <tr>
             <td>6</td>
-            <td><a href="https://press.levelinfinite.com/en/TiMi-Studio-Group" target="_blank">press.l
+            <td><a href="https://press.levelinfinite.com/en/TiMi-Studio-Group" target="_blank">press.levelinfinite.com</a></td>
+            <td>TiMi Studios / Level Infinite press</td>
+            <td><span class="badge unsent">✗ Not contacted</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
