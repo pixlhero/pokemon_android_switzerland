@@ -465,6 +465,16 @@
         <div class="game-name">Pokémon Café ReMix</div>
         <div class="game-dev">Genius Sonority / The Pokémon Company</div>
       </div>
+      <div class="game-card broken">
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
+        <div class="game-name">Pokémon HOME</div>
+        <div class="game-dev">The Pokémon Company / Game Freak</div>
+      </div>
+      <div class="game-card broken">
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
+        <div class="game-name">Pokémon: Magikarp Jump</div>
+        <div class="game-dev">The Pokémon Company</div>
+      </div>
       <div class="game-card works">
         <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon GO</div>
@@ -475,23 +485,23 @@
         <div class="game-name">Pokémon TCG Pocket</div>
         <div class="game-dev">DeNA / Creatures</div>
       </div>
-      <div class="game-card broken">
-        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
-        <div class="game-name">Pokémon HOME</div>
-        <div class="game-dev">The Pokémon Company / Game Freak</div>
-      </div>
       <div class="game-card works">
         <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon TCG Live</div>
         <div class="game-dev">The Pokémon Company International</div>
       </div>
-      <div class="game-card works">
-        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
+      <div class="game-card broken">
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon Smile</div>
         <div class="game-dev">The Pokémon Company</div>
       </div>
       <div class="game-card works">
         <div class="game-status" data-i18n="status-works">✓ Works on both</div>
+        <div class="game-name">Pokémon Shuffle Mobile</div>
+        <div class="game-dev">Genius Sonority / The Pokémon Company</div>
+      </div>
+      <div class="game-card broken">
+        <div class="game-status" data-i18n="status-broken">❌ Android unavailable</div>
         <div class="game-name">Pokémon Quest</div>
         <div class="game-dev">The Pokémon Company</div>
       </div>
@@ -499,11 +509,6 @@
         <div class="game-status" data-i18n="status-works">✓ Works on both</div>
         <div class="game-name">Pokémon Playhouse</div>
         <div class="game-dev">The Pokémon Company International</div>
-      </div>
-      <div class="game-card works">
-        <div class="game-status" data-i18n="status-works">✓ Works on both</div>
-        <div class="game-name">Pokémon: Magikarp Jump</div>
-        <div class="game-dev">The Pokémon Company</div>
       </div>
       <div class="game-card works">
         <div class="game-status" data-i18n="status-works">✓ Works on both</div>
@@ -545,7 +550,7 @@
       <div class="reason-item"><div class="reason-num">05</div><div class="reason-text" data-i18n="reason-5"><strong>Tax/currency complexity</strong> — Switzerland uses CHF, not EUR; payment processing setup may have been deprioritized.</div></div>
       <div class="reason-item"><div class="reason-num">06</div><div class="reason-text" data-i18n="reason-6"><strong>Age rating / content classification</strong> — Swiss-specific IARC ratings may not have been submitted for Google Play.</div></div>
       <div class="reason-item"><div class="reason-num">07</div><div class="reason-text" data-i18n="reason-7"><strong>Historical inertia</strong> — Once excluded at launch, nobody prioritized fixing it.</div></div>
-      <div class="reason-item"><div class="reason-num">08</div><div class="reason-text" data-i18n="reason-8"><strong>Niantic exception</strong> — Pokémon GO (published by Niantic, not through TPC's usual pipeline) works fine, suggesting the issue is specific to how TPC/DeNA/TiMi handle Google Play distribution.</div></div>
+      <div class="reason-item"><div class="reason-num">08</div><div class="reason-text" data-i18n="reason-8"><strong>Publishing mix</strong> — Pokémon GO (Niantic) and Pokémon Shuffle Mobile (Genius Sonority / TPC) are on Google Play in Switzerland, while several other TPC/DeNA/TiMi titles are not — availability is selective, not a blanket ban.</div></div>
     </div>
   </section>
 
@@ -853,7 +858,7 @@
 const T = {
   en: {
     'hero-tag': 'Open Investigation',
-    'h1': 'Pokémon<br><span>missing in Switzerland</span>',
+    'h1': 'Pokémon Games<br><span>missing in Switzerland</span>',
     'hero-sub': 'Several Pokémon games work on iPhone in Switzerland — but are completely absent from Google Play. No one has ever explained why.',
     'updated': 'Last updated: March 24, 2026',
     'scroll-hint': 'scroll to explore ↓',
@@ -874,7 +879,7 @@ const T = {
     'reason-5': '<strong>Tax/currency complexity</strong> — Switzerland uses CHF, not EUR; payment processing setup may have been deprioritized.',
     'reason-6': '<strong>Age rating / content classification</strong> — Swiss-specific IARC ratings may not have been submitted for Google Play.',
     'reason-7': '<strong>Historical inertia</strong> — Once excluded at launch, nobody prioritized fixing it.',
-    'reason-8': '<strong>Niantic exception</strong> — Pokémon GO (published by Niantic, not through TPC\'s usual pipeline) works fine, suggesting the issue is specific to how TPC/DeNA/TiMi handle Google Play distribution.',
+    'reason-8': '<strong>Publishing mix</strong> — Pokémon GO (Niantic) and Pokémon Shuffle Mobile (Genius Sonority / TPC) are on Google Play in Switzerland, while several other TPC/DeNA/TiMi titles are not — availability is selective, not a blanket ban.',
     'label-progress': 'Actions Taken &amp; Next Steps',
     'h3-completed': 'Completed',
     'h3-open': 'Still Open',
@@ -952,7 +957,7 @@ const T = {
   },
   de: {
     'hero-tag': 'Offene Untersuchung',
-    'h1': 'Pokémon<br><span>vermisst in der Schweiz</span>',
+    'h1': 'Pokémon Games<br><span>gesperrt in der Schweiz</span>',
     'hero-sub': 'Mehrere Pokémon-Spiele funktionieren auf dem iPhone in der Schweiz – fehlen aber komplett im Google Play Store. Niemand hat je erklärt, warum.',
     'updated': 'Zuletzt aktualisiert: 24. März 2026',
     'scroll-hint': 'scrollen ↓',
@@ -973,7 +978,7 @@ const T = {
     'reason-5': '<strong>Steuer-/Währungskomplexität</strong> — Die Schweiz nutzt CHF, nicht EUR; die Zahlungsabwicklung wurde möglicherweise zurückgestellt.',
     'reason-6': '<strong>Alterseinstufung / Inhaltskategorisierung</strong> — Schweizspezifische IARC-Bewertungen wurden möglicherweise nicht für Google Play eingereicht.',
     'reason-7': '<strong>Historische Trägheit</strong> — Einmal beim Launch ausgeschlossen, hat niemand die Korrektur priorisiert.',
-    'reason-8': '<strong>Niantic-Ausnahme</strong> — Pokémon GO (von Niantic veröffentlicht, nicht über TPCs übliche Pipeline) funktioniert einwandfrei – das Problem scheint spezifisch für TPCs/DeNAs/TiMis Google Play Distribution zu sein.',
+    'reason-8': '<strong>Verlagsmix</strong> — Pokémon GO (Niantic) und Pokémon Shuffle Mobile (Genius Sonority / TPC) sind in der Schweiz im Google Play Store, während andere TPC/DeNA/TiMi-Titel fehlen — die Verfügbarkeit ist selektiv, kein pauschales Verbot.',
     'label-progress': 'Unternommene Schritte &amp; Nächstes',
     'h3-completed': 'Abgeschlossen',
     'h3-open': 'Noch offen',
