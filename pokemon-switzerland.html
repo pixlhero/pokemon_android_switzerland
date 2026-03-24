@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokémon Android Switzerland — Investigation</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f14;
+    --surface: #16181f;
+    --surface2: #1d2029;
+    --border: #2a2d3a;
+    --accent: #ffcb05;
+    --accent2: #3d7dca;
+    --red: #e8324a;
+    --green: #2ecc71;
+    --text: #e8eaf0;
+    --muted: #8a8fa8;
+    --font: 'Syne', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0e0f14 0%, #111520 50%, #0a0d18 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '⬡';
+    position: absolute;
+    font-size: 420px;
+    color: rgba(255,203,5,0.03);
+    right: -60px;
+    top: -80px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(255,203,5,0.1);
+    border: 1px solid rgba(255,203,5,0.25);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--accent); }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 15px;
+    font-family: var(--mono);
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .updated {
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* SECTIONS */
+  section {
+    margin-top: 48px;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  /* IRONY CALLOUT */
+  .callout-irony {
+    background: linear-gradient(135deg, rgba(232,50,74,0.12), rgba(232,50,74,0.05));
+    border: 1px solid rgba(232,50,74,0.35);
+    border-left: 3px solid var(--red);
+    border-radius: 6px;
+    padding: 20px 24px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #f0c0c7;
+  }
+  .callout-irony strong { color: var(--red); }
+
+  /* GAME CARDS GRID */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .game-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+  .game-card:hover { border-color: var(--accent2); }
+  .game-card.broken { border-left: 3px solid var(--red); }
+  .game-card.works { border-left: 3px solid var(--green); }
+  .game-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .game-card.broken .game-status { color: var(--red); }
+  .game-card.works .game-status { color: var(--green); }
+  .game-name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .game-dev {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* REASONS */
+  .reasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reason-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+  .reason-item:hover { background: var(--surface2); }
+  .reason-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 24px;
+    padding-top: 1px;
+  }
+  .reason-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .reason-text strong { color: var(--accent2); }
+
+  /* CONTACT TABLE */
+  .contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .contact-table th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(42,45,58,0.5);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .contact-table tr:hover td { background: var(--surface); }
+  .contact-table a {
+    color: var(--accent2);
+    text-decoration: none;
+    word-break: break-all;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .contact-table a:hover { text-decoration: underline; }
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+  .badge.sent {
+    background: rgba(46,204,113,0.15);
+    color: var(--green);
+    border: 1px solid rgba(46,204,113,0.3);
+  }
+  .badge.unsent {
+    background: rgba(232,50,74,0.12);
+    color: var(--red);
+    border: 1px solid rgba(232,50,74,0.25);
+  }
+  .badge.replied {
+    background: rgba(61,125,202,0.15);
+    color: var(--accent2);
+    border: 1px solid rgba(61,125,202,0.35);
+  }
+
+  /* REPLY BLOCK */
+  .reply-block {
+    background: linear-gradient(135deg, rgba(61,125,202,0.08), rgba(61,125,202,0.03));
+    border: 1px solid rgba(61,125,202,0.3);
+    border-left: 3px solid var(--accent2);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .reply-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .reply-meta span { color: var(--accent2); }
+  .reply-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+  .reply-verdict {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(255,203,5,0.07);
+    border: 1px solid rgba(255,203,5,0.2);
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  /* PROGRESS */
+  .progress-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .progress-cols { grid-template-columns: 1fr; } }
+  .progress-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .progress-box h3 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--mono);
+  }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .check-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .check-list li .icon { flex-shrink: 0; margin-top: 1px; }
+  .check-list li.done .icon::before { content: '✓'; color: var(--green); }
+  .check-list li.todo .icon::before { content: '○'; color: var(--muted); }
+  .check-list li.error .icon::before { content: '✗'; color: var(--red); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-tag">Open Investigation · Android · Switzerland</div>
+    <h1>Pokémon Games Missing from<br><span>Swiss Google Play</span></h1>
+    <p class="hero-sub">Multiple Pokémon mobile games are available on the iOS App Store in Switzerland but absent from the Google Play Store — with no public explanation from any involved party.</p>
+    <p class="updated">Last updated: March 24, 2026</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- IRONY -->
+  <section>
+    <div class="section-label">Key Irony</div>
+    <div class="callout-irony">
+      <strong>Team Switzerland won the 2024 Pokémon UNITE European Cup</strong> (organized by Unity Clash), beating Germany in the finals — yet Pokémon UNITE is still not available on Android in their own country.
+    </div>
+  </section>
+
+  <!-- REPLIES RECEIVED -->
+  <section>
+    <div class="section-label">Replies Received</div>
+    <h2 style="font-size:16px; margin-bottom:4px;">DeNA — Pokémon Masters EX Support</h2>
+    <div class="reply-meta">
+      <div>From: <span>support@pokemonmasters-game.com</span></div>
+      <div>Date: <span>March 24, 2026 — 14:59 GMT+9</span></div>
+    </div>
+    <div class="reply-block">
+      <div class="reply-body">
+        Hello,<br><br>
+        We really appreciate your interest in Pokémon Masters EX!<br><br>
+        With respect to your inquiry, unfortunately we regret to inform you that <strong>the game is not planned to be released on Android devices in the Swiss Confederation.</strong> Also note that we are unable to provide guidance regarding internal policies and management decisions to individual users.<br><br>
+        That being said, rest assured that your voice will be passed along to the team in charge.<br><br>
+        Finally, please kindly note that this support service is dedicated to addressing inquiries about the game Pokémon Masters EX only and that we are unable to offer assistance for other Pokémon games or services. For inquiries about any other Pokémon games or services, visit the <a href="https://support.pokemon.com/hc/en-us" target="_blank">Official Pokémon Support page</a>.<br><br>
+        Best regards,<br>Pokémon Masters Support
+      </div>
+      <div class="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
+    </div>
+  </section>
+
+  <!-- AFFECTED GAMES -->
+  <section>
+    <div class="section-label">Affected Games</div>
+    <div class="game-grid">
+      <div class="game-card broken">
+        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-name">Pokémon UNITE</div>
+        <div class="game-dev">TiMi Studios / Tencent</div>
+      </div>
+      <div class="game-card broken">
+        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-name">Pokémon Sleep</div>
+        <div class="game-dev">SELECT BUTTON / The Pokémon Company</div>
+      </div>
+      <div class="game-card broken">
+        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-name">Pokémon Masters EX</div>
+        <div class="game-dev">DeNA</div>
+      </div>
+      <div class="game-card broken">
+        <div class="game-status">❌ Android unavailable</div>
+        <div class="game-name">Pokémon Café ReMix</div>
+        <div class="game-dev">Genius Sonority / The Pokémon Company</div>
+      </div>
+      <div class="game-card works">
+        <div class="game-status">✓ Works on both</div>
+        <div class="game-name">Pokémon GO</div>
+        <div class="game-dev">Niantic</div>
+      </div>
+      <div class="game-card works">
+        <div class="game-status">✓ Works on both</div>
+        <div class="game-name">Pokémon TCG Pocket</div>
+        <div class="game-dev">DeNA / Creatures</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSSIBLE REASONS -->
+  <section>
+    <div class="section-label">Possible Reasons</div>
+    <div class="reasons-list">
+      <div class="reason-item"><div class="reason-num">01</div><div class="reason-text"><strong>Regulatory caution</strong> — Switzerland is not in the EU/EEA; gacha/loot box mechanics may face uncertainty under Swiss gambling or consumer protection laws.</div></div>
+      <div class="reason-item"><div class="reason-num">02</div><div class="reason-text"><strong>Google Play opt-in</strong> — Developers must explicitly add each country on Google Play, while App Store defaults tend to be broader.</div></div>
+      <div class="reason-item"><div class="reason-num">03</div><div class="reason-text"><strong>Small market</strong> — Switzerland has ~9 million people with 3 languages; cost-benefit may not justify compliance effort.</div></div>
+      <div class="reason-item"><div class="reason-num">04</div><div class="reason-text"><strong>Different publishing pipelines</strong> — iOS and Android versions may be handled by different internal teams or legal entities.</div></div>
+      <div class="reason-item"><div class="reason-num">05</div><div class="reason-text"><strong>Tax/currency complexity</strong> — Switzerland uses CHF, not EUR; payment processing setup may have been deprioritized.</div></div>
+      <div class="reason-item"><div class="reason-num">06</div><div class="reason-text"><strong>Age rating / content classification</strong> — Swiss-specific IARC ratings may not have been submitted for Google Play.</div></div>
+      <div class="reason-item"><div class="reason-num">07</div><div class="reason-text"><strong>Historical inertia</strong> — Once excluded at launch, nobody prioritized fixing it.</div></div>
+      <div class="reason-item"><div class="reason-num">08</div><div class="reason-text"><strong>Niantic exception</strong> — Pokémon GO (published by Niantic, not through TPC's usual pipeline) works fine, suggesting the issue is specific to how TPC/DeNA/TiMi handle Google Play distribution.</div></div>
+    </div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section>
+    <div class="section-label">Actions Taken &amp; Next Steps</div>
+    <div class="progress-cols">
+      <div class="progress-box">
+        <h3>Completed</h3>
+        <ul class="check-list">
+          <li class="done"><span class="icon"></span>Identified the problem and compiled list of affected games</li>
+          <li class="done"><span class="icon"></span>Researched possible reasons for the exclusion</li>
+          <li class="done"><span class="icon"></span>Built a list of contacts across developers, publishers, tournament organizers</li>
+          <li class="done"><span class="icon"></span>Emailed DeNA game support (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e794929797889593a797888c828a88898a869493829594ca80868a82c984888a">[email&#160;protected]</a>)</li>
+          <li class="done"><span class="icon"></span>Emailed DeNA corporate (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1377767d724c707c61634c7a7d757c5377767d723d707c7e">[email&#160;protected]</a>)</li>
+          <li class="done"><span class="icon"></span>Emailed Shivam / Unity Clash founder (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afdcc7c6d9cec2dfddc0cb9f96efc8c2cec6c381ccc0c2">[email&#160;protected]</a>)</li>
+        </ul>
+      </div>
+      <div class="progress-box">
+        <h3>Still Open</h3>
+        <ul class="check-list">
+          <li class="done"><span class="icon"></span>DeNA game support replied: no Android release planned for Switzerland</li>
+          <li class="todo"><span class="icon"></span>Waiting on replies from DeNA corporate &amp; Unity Clash</li>
+          <li class="error"><span class="icon"></span>The Pokémon Company Intl. support form (had errors)</li>
+          <li class="todo"><span class="icon"></span>Contact TiMi Studios / Level Infinite PR</li>
+          <li class="todo"><span class="icon"></span>Reach out to @PokemonUNITE / @UniteEsports on X</li>
+          <li class="todo"><span class="icon"></span>Verify full list of affected games on Android device</li>
+          <li class="todo"><span class="icon"></span>Post on r/PokemonUnite or r/Switzerland</li>
+          <li class="todo"><span class="icon"></span>Contact Swiss gaming journalists</li>
+          <li class="todo"><span class="icon"></span>Consider petition or social media campaign</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT TABLE -->
+  <section>
+    <div class="section-label">Contact List</div>
+    <div style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;">
+      <table class="contact-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Contact</th>
+            <th>Type</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><a href="/cdn-cgi/l/email-protection#74070104041b060034041b1f11191b1a1915070011060759131519115a171b19"><span class="__cf_email__" data-cfemail="bccfc9ccccd3cec8fcccd3d7d9d1d3d2d1ddcfc8d9cecf91dbddd1d992dfd3d1">[email&#160;protected]</span></a></td>
+            <td>DeNA game support</td>
+            <td><span class="badge replied">↩ Replied</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="/cdn-cgi/l/email-protection#2b4f4e454a744844595b7442454d446b4f4e454a05484446"><span class="__cf_email__" data-cfemail="36525358576955594446695f58505976525358571855595b">[email&#160;protected]</span></a></td>
+            <td>DeNA corporate</td>
+            <td><span class="badge sent">✓ Sent</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><a href="/cdn-cgi/l/email-protection#77041f1e01161a07051813474e37101a161e1b5914181a"><span class="__cf_email__" data-cfemail="05766d6c73646875776a61353c456268646c692b666a68">[email&#160;protected]</span></a></td>
+            <td>Shivam, Unity Clash founder</td>
+            <td><span class="badge sent">✓ Sent</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><a href="https://support.pokemon.com/hc/en-us/requests/new" target="_blank">support.pokemon.com/…/new</a></td>
+            <td>The Pokémon Company Intl. support form</td>
+            <td><span class="badge unsent">✗ Had errors</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><a href="/cdn-cgi/l/email-protection#3c4c4e554a5d5f454d49594f485553524f7c4c535759515352125f5351"><span class="__cf_email__" data-cfemail="2757554e5146445e56524254534e4849546757484c424a48490944484a">[email&#160;protected]</span></a></td>
+            <td>The Pokémon Company Intl. (privacy — not ideal)</td>
+            <td><span class="badge unsent">✗ Not sent</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><a href="https://press.levelinfinite.com/en/TiMi-Studio-Group" target="_blank">press.l
