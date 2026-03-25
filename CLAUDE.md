@@ -24,6 +24,10 @@ Investigation site documenting Pokémon games missing from Google Play in Switze
 - Actions Taken & Next Steps (progress checklists)
 - Contact List (tables)
 
+## Workflow
+
+- After making any changes, always commit and push to `develop` immediately. The site is live on GitHub Pages and users depend on it being up to date.
+
 ## Style notes
 
 - Warm, friendly aesthetic (cream/brown/gold tones). Avoid blue tints in content areas.
