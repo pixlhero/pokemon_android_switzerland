@@ -377,32 +377,13 @@
     box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.05);
   }
 
-  /* Envelope flap — triangle at top */
-  .envelope-closed::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 0;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-top: 40px solid #e8dfc4;
-    pointer-events: none;
-  }
-  .envelope-closed::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 0;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-top: 38px solid rgba(245,200,0,0.15);
-    pointer-events: none;
-  }
+  .envelope-closed::before { display: none; }
+  .envelope-closed::after { display: none; }
 
   .envelope-sender {
     position: relative;
     z-index: 1;
-    margin-top: 20px;
+    margin-top: 0;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -412,7 +393,7 @@
     height: 44px;
     background: linear-gradient(135deg, #ff7a8a, #f5c800);
     border-radius: 6px;
-    border: 2px dashed rgba(255,255,255,0.6);
+    border: 2px solid rgba(255,255,255,0.6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -468,12 +449,6 @@
     border-color: rgba(91,173,222,0.35);
     border-radius: 16px 16px 0 0;
     border-bottom: none;
-  }
-  .envelope[open] .envelope-closed::before {
-    border-top-color: #cde6f0;
-  }
-  .envelope[open] .envelope-closed::after {
-    border-top-color: rgba(91,173,222,0.1);
   }
 
   .reply-block {
