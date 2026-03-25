@@ -149,6 +149,9 @@
     animation: nudge 2.4s ease-in-out infinite;
     user-select: none;
   }
+  @media (max-width: 600px) {
+    .scroll-hint { font-size: 1rem; font-weight: 600; }
+  }
   @keyframes nudge {
     0%, 100% { transform: translateY(0); opacity: 0.5; }
     50% { transform: translateY(5px); opacity: 0.8; }
