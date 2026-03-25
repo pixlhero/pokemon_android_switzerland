@@ -4,29 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pokémon Android Switzerland — Investigation</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0e0f14;
-    --surface: #16181f;
-    --surface2: #1d2029;
-    --border: #2a2d3a;
-    --accent: #ffcb05;
-    --accent2: #3d7dca;
-    --red: #e8324a;
-    --green: #2ecc71;
-    --text: #e8eaf0;
-    --muted: #8a8fa8;
-    --font: 'Syne', sans-serif;
-    --mono: 'DM Mono', monospace;
+    --bg: #f0ece0;
+    --surface: #fffaef;
+    --surface2: #fff7e0;
+    --border: #e0d8c0;
+    --accent: #f5c800;
+    --accent2: #5badde;
+    --red: #ff7a8a;
+    --green: #5dcc8a;
+    --text: #3a2e1e;
+    --muted: #8a7d65;
+    --font: 'Fredoka', sans-serif;
+    --mono: 'Nunito', sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
 
   body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--font);
+    font-weight: 500;
     min-height: 100vh;
     padding: 0 0 80px;
   }
@@ -35,32 +38,22 @@
   .hero {
     height: 100vh;
     overflow: hidden;
-    background: linear-gradient(160deg, #0e0f14 0%, #111520 55%, #0a0d18 100%);
-    border-bottom: 1px solid var(--border);
+    background: linear-gradient(160deg, #c8f0f7 0%, #b8f0c8 45%, #fff0a0 100%);
+    border-bottom: 3px solid var(--border);
     position: relative;
     display: flex;
     flex-direction: column;
   }
-  .hero::before {
-    content: '⬡';
-    position: absolute;
-    font-size: 600px;
-    color: rgba(255,203,5,0.025);
-    right: -80px;
-    top: -100px;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
+  .hero::before { display: none; }
   .hero::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
-    opacity: 0.4;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent2), var(--green), transparent);
+    opacity: 0.6;
   }
 
   /* LANG TOGGLE */
@@ -69,23 +62,25 @@
     top: 24px;
     right: 28px;
     display: flex;
-    gap: 4px;
+    gap: 6px;
     z-index: 10;
   }
   .lang-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(245, 200, 0, 0.4);
+    color: var(--text);
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    padding: 5px 12px;
-    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 6px 16px;
+    border-radius: 999px;
     cursor: pointer;
     transition: all 0.2s;
+    backdrop-filter: blur(8px);
   }
-  .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .lang-btn.active { background: rgba(255,203,5,0.12); border-color: rgba(255,203,5,0.4); color: var(--accent); }
+  .lang-btn:hover { background: rgba(245, 200, 0, 0.3); border-color: var(--accent); transform: translateY(-2px); }
+  .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #3a2e1e; box-shadow: 0 4px 12px rgba(245, 200, 0, 0.4); }
 
   /* HERO INNER — centered content */
   .hero-inner {
@@ -101,41 +96,44 @@
   .hero-tag {
     display: inline-block;
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(255,203,5,0.1);
-    border: 1px solid rgba(255,203,5,0.25);
-    padding: 4px 10px;
-    border-radius: 3px;
+    color: #3a2e1e;
+    background: rgba(245, 200, 0, 0.35);
+    border: 2px solid rgba(245, 200, 0, 0.6);
+    padding: 6px 14px;
+    border-radius: 999px;
     margin-bottom: 28px;
     align-self: flex-start;
   }
   h1 {
-    font-size: clamp(32px, 6vw, 64px);
-    font-weight: 800;
-    line-height: 1.08;
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: 700;
+    line-height: 1.1;
     max-width: 780px;
     margin-bottom: 24px;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+    color: var(--text);
   }
-  h1 span { color: var(--accent); }
+  h1 span { color: #2a7a3a; }
   .hero-sub {
     color: var(--muted);
-    font-size: 20px;
+    font-size: 22px;
     font-family: var(--mono);
+    font-weight: 500;
     max-width: 600px;
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 48px;
   }
 
   .updated {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
-    letter-spacing: 0.08em;
-    opacity: 0.6;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
   }
 
   /* SCROLL HINT */
@@ -143,10 +141,11 @@
     text-align: center;
     padding: 28px;
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     color: var(--muted);
-    opacity: 0.5;
+    opacity: 0.7;
     animation: nudge 2.4s ease-in-out infinite;
     user-select: none;
   }
@@ -180,11 +179,12 @@
   .section-label::after {
     content: '';
     flex: 1;
-    height: 1px;
-    background: var(--border);
+    height: 2px;
+    background: linear-gradient(90deg, var(--border), transparent);
+    border-radius: 2px;
   }
   h2 {
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--text);
@@ -192,53 +192,57 @@
 
   /* IRONY CALLOUT */
   .callout-irony {
-    background: linear-gradient(135deg, rgba(232,50,74,0.12), rgba(232,50,74,0.05));
-    border: 1px solid rgba(232,50,74,0.35);
-    border-left: 3px solid var(--red);
-    border-radius: 6px;
-    padding: 20px 24px;
-    font-size: 17px;
-    line-height: 1.7;
-    color: #f0c0c7;
+    background: linear-gradient(135deg, rgba(255,122,138,0.12), rgba(255,122,138,0.04));
+    border: 2px solid rgba(255,122,138,0.4);
+    border-left: 5px solid var(--red);
+    border-radius: 20px;
+    padding: 22px 28px;
+    font-size: 20px;
+    line-height: 1.75;
+    color: var(--text);
+    box-shadow: 0 4px 20px rgba(255,122,138,0.1), 0 2px 6px rgba(0,0,0,0.04);
   }
-  .callout-irony strong { color: var(--red); }
+  .callout-irony strong { color: #c0304a; }
 
   /* GAME CARDS GRID */
   .game-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
+    gap: 14px;
   }
   .game-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    transition: border-color 0.2s;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 18px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
   }
-  .game-card:hover { border-color: var(--accent2); }
-  .game-card.broken { border-left: 3px solid var(--red); }
-  .game-card.works { border-left: 3px solid var(--green); }
-  .game-card.unverified { border-left: 3px solid var(--muted); }
+  .game-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06); }
+  .game-card.broken { border-left: 5px solid var(--red); }
+  .game-card.works { border-left: 5px solid var(--green); }
+  .game-card.unverified { border-left: 5px solid var(--muted); }
   .game-status {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 8px;
   }
-  .game-card.broken .game-status { color: var(--red); }
-  .game-card.works .game-status { color: var(--green); }
+  .game-card.broken .game-status { color: #c0304a; }
+  .game-card.works .game-status { color: #2a8050; }
   .game-card.unverified .game-status { color: var(--muted); }
   .game-name {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 19px;
     margin-bottom: 4px;
     line-height: 1.3;
+    color: var(--text);
   }
   .game-dev {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 15px;
     color: var(--muted);
   }
 
@@ -250,25 +254,31 @@
   }
   .reason-item {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 20px;
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    transition: background 0.2s;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
-  .reason-item:hover { background: var(--surface2); }
+  .reason-item:hover { background: var(--surface2); transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
   .reason-num {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: 800;
     color: var(--accent);
-    min-width: 24px;
-    padding-top: 1px;
+    min-width: 28px;
+    background: rgba(245,200,0,0.2);
+    border-radius: 8px;
+    text-align: center;
+    padding: 2px 6px;
+    flex-shrink: 0;
   }
   .reason-text {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 19px;
+    line-height: 1.65;
     color: var(--text);
   }
   .reason-text strong { color: var(--accent2); }
@@ -276,105 +286,114 @@
   /* CONTACT TABLE */
   .contact-table {
     width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 17px;
   }
   .contact-table th {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--muted);
     text-align: left;
     padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--border);
+    background: rgba(245,200,0,0.08);
   }
   .contact-table td {
     padding: 12px 14px;
-    border-bottom: 1px solid rgba(42,45,58,0.5);
+    border-bottom: 1px solid var(--border);
     vertical-align: top;
     line-height: 1.5;
+    color: var(--text);
   }
-  .contact-table tr:hover td { background: var(--surface); }
+  .contact-table tr:hover td { background: rgba(245,200,0,0.06); }
   .contact-table a {
     color: var(--accent2);
     text-decoration: none;
     word-break: break-all;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
+    font-weight: 600;
   }
-  .contact-table a:hover { text-decoration: underline; }
+  .contact-table a:hover { text-decoration: underline; color: #2a6aaa; }
   .badge {
     display: inline-block;
     font-family: var(--mono);
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 3px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
   }
   .badge.sent {
-    background: rgba(46,204,113,0.15);
-    color: var(--green);
-    border: 1px solid rgba(46,204,113,0.3);
+    background: rgba(93,204,138,0.2);
+    color: #1a7a4a;
+    border: 2px solid rgba(93,204,138,0.5);
   }
   .badge.unsent {
-    background: rgba(232,50,74,0.12);
-    color: var(--red);
-    border: 1px solid rgba(232,50,74,0.25);
+    background: rgba(255,122,138,0.15);
+    color: #b02040;
+    border: 2px solid rgba(255,122,138,0.4);
   }
   .badge.replied {
-    background: rgba(61,125,202,0.15);
-    color: var(--accent2);
-    border: 1px solid rgba(61,125,202,0.35);
+    background: rgba(91,173,222,0.2);
+    color: #1a5a9a;
+    border: 2px solid rgba(91,173,222,0.5);
   }
   .badge.waiting {
-    background: rgba(255,203,5,0.1);
-    color: var(--accent);
-    border: 1px solid rgba(255,203,5,0.25);
+    background: rgba(245,200,0,0.2);
+    color: #8a6a00;
+    border: 2px solid rgba(245,200,0,0.5);
   }
 
   /* REPLY BLOCK */
   .reply-block {
-    background: linear-gradient(135deg, rgba(61,125,202,0.08), rgba(61,125,202,0.03));
-    border: 1px solid rgba(61,125,202,0.3);
-    border-left: 3px solid var(--accent2);
-    border-radius: 6px;
-    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(91,173,222,0.10), rgba(91,173,222,0.03));
+    border: 2px solid rgba(91,173,222,0.35);
+    border-left: 6px solid var(--accent2);
+    border-radius: 20px;
+    padding: 24px 28px;
     margin-top: 16px;
+    box-shadow: 0 4px 20px rgba(91,173,222,0.10), 0 2px 6px rgba(0,0,0,0.04);
   }
   .reply-meta {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 600;
     color: var(--muted);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
   }
   .reply-meta span { color: var(--accent2); }
   .reply-body {
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 19px;
+    line-height: 1.8;
     color: var(--text);
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
+    border-top: 2px solid var(--border);
+    padding-top: 14px;
   }
   .reply-verdict {
-    margin-top: 14px;
-    padding: 10px 14px;
-    background: rgba(255,203,5,0.07);
-    border: 1px solid rgba(255,203,5,0.2);
-    border-radius: 4px;
-    font-size: 13px;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: rgba(245,200,0,0.12);
+    border: 2px solid rgba(245,200,0,0.35);
+    border-radius: 12px;
+    font-size: 16px;
     font-family: var(--mono);
-    color: var(--accent);
+    font-weight: 600;
+    color: #7a5800;
   }
 
   /* PROGRESS */
   .progress-cols {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 18px;
   }
   @media (max-width: 600px) {
     .progress-cols { grid-template-columns: 1fr; }
@@ -382,32 +401,69 @@
   }
   .progress-box {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
   }
   .progress-box h3 {
     font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 14px;
+    font-weight: 800;
+    margin-bottom: 16px;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     font-family: var(--mono);
   }
-  .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
   .check-list li {
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 17px;
+    line-height: 1.55;
     display: flex;
     gap: 10px;
     align-items: flex-start;
+    color: var(--text);
   }
   .check-list li .icon { flex-shrink: 0; margin-top: 1px; }
-  .check-list li.done .icon::before { content: '✓'; color: var(--green); }
+  .check-list li.done .icon::before { content: '✓'; color: #1a7a4a; }
   .check-list li.todo .icon::before { content: '○'; color: var(--muted); }
-  .check-list li.error .icon::before { content: '✗'; color: var(--red); }
-  .check-list li.waiting .icon::before { content: '⏳'; color: var(--accent); }
+  .check-list li.error .icon::before { content: '✗'; color: #b02040; }
+  .check-list li.waiting .icon::before { content: '⏳'; color: #8a6a00; }
+
+  /* TABLE SHOW MORE */
+  h2.table-heading { font-size: 24px; margin-bottom: 14px; }
+  #wrap-direct:not(.expanded) .contact-table tbody tr:nth-child(n+6),
+  #wrap-communities:not(.expanded) .contact-table tbody tr:nth-child(n+6) {
+    display: none;
+  }
+  .show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .show-more-btn:hover {
+    background: var(--surface2);
+    border-color: var(--accent2);
+    transform: translateY(-1px);
+  }
+
+  /* Override inline-styled table wrappers */
+  [style*="overflow-x:auto"] {
+    border-radius: 16px !important;
+    border: 2px solid var(--border) !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+  }
 </style>
 </head>
 <body>
@@ -537,6 +593,25 @@
       </div>
       <div class="reply-verdict" data-i18n="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
     </div>
+
+    <h2 style="font-size:16px; margin-bottom:4px; margin-top:24px;">The Pokémon Company International Support</h2>
+    <div class="reply-meta">
+      <div><span data-i18n="reply-from">From:</span> <span>support.pokemon.com (Agent_Platin)</span></div>
+      <div><span data-i18n="reply-date">Date:</span> <span>Feb 27, 2024 — 11:38 PST</span></div>
+      <div>Ticket #2079372</div>
+    </div>
+    <div class="reply-block">
+      <div class="reply-body">
+        Hello Raphael,<br><br>
+        Thank you for contacting Pokémon Support! We are unable to provide information for anything that has not been publicly announced.<br><br>
+        In general, it's a good idea to keep an eye on the Pokémon website for most announcements.<br><br>
+        For App availability, we recommend keeping an eye on the app store for your device for future updates.<br><br>
+        For in-app updates, we recommend keeping an eye on the app as most will have announcements in the app itself regarding any updates.<br><br>
+        Thank you for playing Pokémon!<br>
+        Sincerely,<br>Agent_Platin<br>The Pokémon Company International Support Team
+      </div>
+      <div class="reply-verdict">⚠ Generic non-answer. No confirmation or denial — just "check the app store."</div>
+    </div>
   </section>
 
   <!-- POSSIBLE REASONS -->
@@ -598,8 +673,8 @@
   <section id="contacts">
     <div class="section-label" data-i18n="label-contacts">Contact List</div>
 
-    <h2 style="font-size:18px; margin-bottom:12px; color:var(--muted);" data-i18n="h2-direct">Direct Contacts</h2>
-    <div style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 32px;">
+    <h2 class="table-heading" data-i18n="h2-direct">Direct Contacts</h2>
+    <div id="wrap-direct" style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px;">
       <table class="contact-table">
         <thead>
           <tr>
@@ -612,108 +687,114 @@
         <tbody>
           <tr>
             <td>1</td>
+            <td><a href="mailto:supportteam@pokemon.com">supportteam@pokemon.com</a></td>
+            <td>TPC International support</td>
+            <td><span class="badge replied">↩ Replied</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
             <td><a href="mailto:support@pokemonmasters-game.com">support@pokemonmasters-game.com</a></td>
             <td data-i18n="type-1">DeNA game support</td>
             <td><span class="badge replied" data-i18n="badge-replied">↩ Replied</span></td>
           </tr>
           <tr>
-            <td>2</td>
+            <td>3</td>
             <td><a href="mailto:dena_corp_info@dena.com">dena_corp_info@dena.com</a></td>
             <td data-i18n="type-2">DeNA corporate</td>
             <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
-            <td>3</td>
+            <td>4</td>
             <td><a href="mailto:shivamprod09@gmail.com">shivamprod09@gmail.com</a></td>
             <td data-i18n="type-3">Shivam, Unity Clash founder</td>
             <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
-            <td>4</td>
+            <td>5</td>
             <td><a href="https://support.pokemon.com/hc/en-us/requests/new" target="_blank">support.pokemon.com/…/new</a></td>
             <td data-i18n="type-4">The Pokémon Company Intl. support form</td>
             <td><span class="badge waiting" data-i18n="badge-waiting-acct">⏳ Waiting on account</span></td>
           </tr>
           <tr>
-            <td>5</td>
+            <td>6</td>
             <td><a href="https://press.levelinfinite.com/en/TiMi-Studio-Group" target="_blank">press.levelinfinite.com</a></td>
             <td data-i18n="type-5">TiMi Studios / Level Infinite press</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>6</td>
+            <td>7</td>
             <td><a href="mailto:pokemon@msm.digital">pokemon@msm.digital</a></td>
             <td data-i18n="type-6">The Pokémon Company Intl. — European PR (via pokemon.gamespress.com)</td>
             <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
-            <td>7</td>
+            <td>8</td>
             <td><a href="https://dena.com/intl/contact/press" target="_blank">dena.com/intl/contact/press</a></td>
             <td data-i18n="type-7">DeNA press contact</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>8</td>
+            <td>9</td>
             <td><a href="https://www.alpineleague.gg" target="_blank">alpineleague.gg</a></td>
             <td data-i18n="type-8">Alpine League — Swiss esports platform</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>9</td>
+            <td>10</td>
             <td><a href="https://mein-mmo.de" target="_blank">mein-mmo.de</a></td>
             <td data-i18n="type-9">Mein-MMO — German mobile/Pokémon gaming outlet</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>10</td>
+            <td>11</td>
             <td><a href="mailto:pokemoneu@hopeandglorypr.com">pokemoneu@hopeandglorypr.com</a></td>
             <td data-i18n="type-10">Hope &amp; Glory PR — TPC European PR agency</td>
             <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
-            <td>11</td>
+            <td>12</td>
             <td><a href="https://press.levelinfinite.com/Site/Contact" target="_blank">press.levelinfinite.com/Site/Contact</a></td>
             <td data-i18n="type-11">Level Infinite press form (GSA region)</td>
             <td><span class="badge waiting" data-i18n="badge-waiting">⏳ Waiting</span></td>
           </tr>
           <tr>
-            <td>12</td>
+            <td>13</td>
             <td><a href="https://x.com/snowwpoints" target="_blank">@Snowwpoints</a></td>
             <td data-i18n="type-12">Snow — Swiss UNITE player, 2024 European Cup champion</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>13</td>
+            <td>14</td>
             <td><a href="https://x.com/Zervas_" target="_blank">@Zervas_</a></td>
             <td data-i18n="type-13">Zervas (Fabio Bügler) — Switzerland's top UNITE earner, streamer</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>14</td>
+            <td>15</td>
             <td><a href="https://x.com/Ghatlue" target="_blank">@Ghatlue</a></td>
             <td data-i18n="type-14">Ghatlue — Top German UNITE player, Unity Clash co-host (~7k followers)</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>15</td>
+            <td>16</td>
             <td><a href="https://x.com/TabbyTendo" target="_blank">@TabbyTendo</a></td>
             <td data-i18n="type-15">TabbyTendo — Admin of #PKDE Discord (DE/AT/CH Pokémon community)</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>16</td>
+            <td>17</td>
             <td><a href="https://x.com/pChalTV" target="_blank">@pChalTV</a></td>
             <td data-i18n="type-16">pChal — Biggest German Pokémon creator (941k YouTube, 328k Twitch)</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>17</td>
+            <td>18</td>
             <td><a href="https://x.com/domtendo" target="_blank">@Domtendo</a></td>
             <td data-i18n="type-17">Domtendo — Top German Nintendo/Pokémon creator (1.6M YouTube)</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
           </tr>
           <tr>
-            <td>18</td>
+            <td>19</td>
             <td><a href="https://www.ntower.de" target="_blank">ntower.de</a></td>
             <td data-i18n="type-18">ntower — Germany's leading Nintendo outlet, covers Pokémon</td>
             <td><span class="badge unsent" data-i18n="badge-unsent">✗ Not contacted</span></td>
@@ -721,9 +802,10 @@
         </tbody>
       </table>
     </div>
+    <button class="show-more-btn" onclick="toggleTable('wrap-direct', 19, this)">Show 14 more ▾</button>
 
-    <h2 style="font-size:18px; margin-bottom:12px; color:var(--muted);" data-i18n="h2-communities">Communities &amp; Groups</h2>
-    <div style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;">
+    <h2 class="table-heading" style="margin-top: 32px;" data-i18n="h2-communities">Communities &amp; Groups</h2>
+    <div id="wrap-communities" style="overflow-x:auto; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px;">
       <table class="contact-table">
         <thead>
           <tr>
@@ -850,6 +932,7 @@
         </tbody>
       </table>
     </div>
+    <button class="show-more-btn" onclick="toggleTable('wrap-communities', 16, this)">Show 11 more ▾</button>
   </section>
 
 </div>
@@ -1055,6 +1138,12 @@ const T = {
     'desc-16': 'Offizielles TPC Feedback-Center – Bereich Mobile Games',
   }
 };
+
+function toggleTable(id, total, btn) {
+  const wrap = document.getElementById(id);
+  const expanded = wrap.classList.toggle('expanded');
+  btn.textContent = expanded ? 'Show less ▴' : `Show ${total - 5} more ▾`;
+}
 
 function setLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
