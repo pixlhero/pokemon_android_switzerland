@@ -350,14 +350,144 @@
   }
 
   /* REPLY BLOCK */
+  /* ENVELOPE COLLAPSIBLE */
+  .envelope {
+    margin-bottom: 24px;
+  }
+  .envelope summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  .envelope summary::-webkit-details-marker { display: none; }
+  .envelope summary::marker { display: none; content: ''; }
+
+  .envelope-closed {
+    background: linear-gradient(145deg, #fffaef 0%, #f7eed4 100%);
+    border: 2px solid #e0d8c0;
+    border-radius: 16px;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .envelope-closed:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 3px 8px rgba(0,0,0,0.05);
+  }
+
+  /* Envelope flap — triangle at top */
+  .envelope-closed::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 40px solid #e8dfc4;
+    pointer-events: none;
+  }
+  .envelope-closed::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 0;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 38px solid rgba(245,200,0,0.15);
+    pointer-events: none;
+  }
+
+  .envelope-sender {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .envelope-stamp {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #ff7a8a, #f5c800);
+    border-radius: 6px;
+    border: 2px dashed rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .envelope-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .envelope-from {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .envelope-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .envelope-peek {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: #7a5800;
+    background: rgba(245,200,0,0.18);
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .envelope-tap {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 8px;
+    opacity: 0.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Opened state */
+  .envelope[open] .envelope-closed {
+    background: linear-gradient(145deg, #f0f8ff 0%, #e8f4f8 100%);
+    border-color: rgba(91,173,222,0.35);
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+  }
+  .envelope[open] .envelope-closed::before {
+    border-top-color: #cde6f0;
+  }
+  .envelope[open] .envelope-closed::after {
+    border-top-color: rgba(91,173,222,0.1);
+  }
+
   .reply-block {
     background: linear-gradient(135deg, rgba(91,173,222,0.10), rgba(91,173,222,0.03));
     border: 2px solid rgba(91,173,222,0.35);
-    border-left: 6px solid var(--accent2);
-    border-radius: 20px;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
     padding: 24px 28px;
-    margin-top: 16px;
     box-shadow: 0 4px 20px rgba(91,173,222,0.10), 0 2px 6px rgba(0,0,0,0.04);
+    animation: unfold 0.3s ease-out;
+  }
+  @keyframes unfold {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .reply-meta {
     font-family: var(--mono);
@@ -577,41 +707,69 @@
   <!-- REPLIES RECEIVED -->
   <section id="replies">
     <div class="section-label" data-i18n="label-replies">Replies Received</div>
-    <h2 style="font-size:16px; margin-bottom:4px;">DeNA — Pokémon Masters EX Support</h2>
-    <div class="reply-meta">
-      <div><span data-i18n="reply-from">From:</span> <span>support@pokemonmasters-game.com</span></div>
-      <div><span data-i18n="reply-date">Date:</span> <span>March 24, 2026 — 14:59 GMT+9</span></div>
-    </div>
-    <div class="reply-block">
-      <div class="reply-body">
-        Hello,<br><br>
-        We really appreciate your interest in Pokémon Masters EX!<br><br>
-        With respect to your inquiry, unfortunately we regret to inform you that <strong>the game is not planned to be released on Android devices in the Swiss Confederation.</strong> Also note that we are unable to provide guidance regarding internal policies and management decisions to individual users.<br><br>
-        That being said, rest assured that your voice will be passed along to the team in charge.<br><br>
-        Finally, please kindly note that this support service is dedicated to addressing inquiries about the game Pokémon Masters EX only and that we are unable to offer assistance for other Pokémon games or services. For inquiries about any other Pokémon games or services, visit the <a href="https://support.pokemon.com/hc/en-us" target="_blank">Official Pokémon Support page</a>.<br><br>
-        Best regards,<br>Pokémon Masters Support
+    <details class="envelope">
+      <summary>
+        <div class="envelope-closed">
+          <div class="envelope-sender">
+            <div class="envelope-stamp">📬</div>
+            <div class="envelope-info">
+              <div class="envelope-from">DeNA — Pokémon Masters EX Support</div>
+              <div class="envelope-date">March 24, 2026 — 14:59 GMT+9</div>
+            </div>
+          </div>
+          <div class="envelope-peek" data-i18n="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
+          <div class="envelope-tap" data-i18n="envelope-tap">tap to open ✉</div>
+        </div>
+      </summary>
+      <div class="reply-block">
+        <div class="reply-meta">
+          <div><span data-i18n="reply-from">From:</span> <span>support@pokemonmasters-game.com</span></div>
+          <div><span data-i18n="reply-date">Date:</span> <span>March 24, 2026 — 14:59 GMT+9</span></div>
+        </div>
+        <div class="reply-body">
+          Hello,<br><br>
+          We really appreciate your interest in Pokémon Masters EX!<br><br>
+          With respect to your inquiry, unfortunately we regret to inform you that <strong>the game is not planned to be released on Android devices in the Swiss Confederation.</strong> Also note that we are unable to provide guidance regarding internal policies and management decisions to individual users.<br><br>
+          That being said, rest assured that your voice will be passed along to the team in charge.<br><br>
+          Finally, please kindly note that this support service is dedicated to addressing inquiries about the game Pokémon Masters EX only and that we are unable to offer assistance for other Pokémon games or services. For inquiries about any other Pokémon games or services, visit the <a href="https://support.pokemon.com/hc/en-us" target="_blank">Official Pokémon Support page</a>.<br><br>
+          Best regards,<br>Pokémon Masters Support
+        </div>
+        <div class="reply-verdict" data-i18n="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
       </div>
-      <div class="reply-verdict" data-i18n="reply-verdict">⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."</div>
-    </div>
+    </details>
 
-    <h2 style="font-size:16px; margin-bottom:4px; margin-top:24px;">The Pokémon Company International Support</h2>
-    <div class="reply-meta">
-      <div><span data-i18n="reply-from">From:</span> <span>support.pokemon.com (Agent_Platin)</span></div>
-      <div><span data-i18n="reply-date">Date:</span> <span>Feb 27, 2024 — 11:38 PST</span></div>
-      <div>Ticket #2079372</div>
-    </div>
-    <div class="reply-block">
-      <div class="reply-body">
-        Hello Raphael,<br><br>
-        Thank you for contacting Pokémon Support! We are unable to provide information for anything that has not been publicly announced.<br><br>
-        In general, it's a good idea to keep an eye on the Pokémon website for most announcements.<br><br>
-        For App availability, we recommend keeping an eye on the app store for your device for future updates.<br><br>
-        For in-app updates, we recommend keeping an eye on the app as most will have announcements in the app itself regarding any updates.<br><br>
-        Thank you for playing Pokémon!<br>
-        Sincerely,<br>Agent_Platin<br>The Pokémon Company International Support Team
+    <details class="envelope">
+      <summary>
+        <div class="envelope-closed">
+          <div class="envelope-sender">
+            <div class="envelope-stamp">📬</div>
+            <div class="envelope-info">
+              <div class="envelope-from">The Pokémon Company International Support</div>
+              <div class="envelope-date">Feb 27, 2024 — 11:38 PST · Ticket #2079372</div>
+            </div>
+          </div>
+          <div class="envelope-peek">⚠ Generic non-answer. No confirmation or denial — just "check the app store."</div>
+          <div class="envelope-tap" data-i18n="envelope-tap">tap to open ✉</div>
+        </div>
+      </summary>
+      <div class="reply-block">
+        <div class="reply-meta">
+          <div><span data-i18n="reply-from">From:</span> <span>support.pokemon.com (Agent_Platin)</span></div>
+          <div><span data-i18n="reply-date">Date:</span> <span>Feb 27, 2024 — 11:38 PST</span></div>
+          <div>Ticket #2079372</div>
+        </div>
+        <div class="reply-body">
+          Hello Raphael,<br><br>
+          Thank you for contacting Pokémon Support! We are unable to provide information for anything that has not been publicly announced.<br><br>
+          In general, it's a good idea to keep an eye on the Pokémon website for most announcements.<br><br>
+          For App availability, we recommend keeping an eye on the app store for your device for future updates.<br><br>
+          For in-app updates, we recommend keeping an eye on the app as most will have announcements in the app itself regarding any updates.<br><br>
+          Thank you for playing Pokémon!<br>
+          Sincerely,<br>Agent_Platin<br>The Pokémon Company International Support Team
+        </div>
+        <div class="reply-verdict">⚠ Generic non-answer. No confirmation or denial — just "check the app store."</div>
       </div>
-      <div class="reply-verdict">⚠ Generic non-answer. No confirmation or denial — just "check the app store."</div>
-    </div>
+    </details>
   </section>
 
   <!-- POSSIBLE REASONS -->
@@ -954,6 +1112,7 @@ const T = {
     'reply-from': 'From:',
     'reply-date': 'Date:',
     'reply-verdict': '⚠ Confirmed: No Android release planned for Switzerland. No reason given. Feedback "passed to the team."',
+    'envelope-tap': 'tap to open ✉',
     'label-reasons': 'Possible Reasons',
     'reason-1': '<strong>Regulatory caution</strong> — Switzerland is not in the EU/EEA; gacha/loot box mechanics may face uncertainty under Swiss gambling or consumer protection laws.',
     'reason-2': '<strong>Google Play opt-in</strong> — Developers must explicitly add each country on Google Play, while App Store defaults tend to be broader.',
@@ -1053,6 +1212,7 @@ const T = {
     'reply-from': 'Von:',
     'reply-date': 'Datum:',
     'reply-verdict': '⚠ Bestätigt: Keine Android-Veröffentlichung für die Schweiz geplant. Kein Grund angegeben. Feedback wurde «ans Team weitergeleitet».',
+    'envelope-tap': 'tippen zum Öffnen ✉',
     'label-reasons': 'Mögliche Gründe',
     'reason-1': '<strong>Regulatorische Vorsicht</strong> — Die Schweiz ist nicht Teil der EU/des EWR; Gacha/Lootbox-Mechaniken könnten nach Schweizer Glücksspiel- oder Konsumentenschutzrecht unsicher sein.',
     'reason-2': '<strong>Google Play Opt-in</strong> — Entwickler müssen jedes Land auf Google Play explizit freischalten, während App Store-Standardeinstellungen tendenziell breiter sind.',
