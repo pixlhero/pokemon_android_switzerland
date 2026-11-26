@@ -204,6 +204,7 @@ section { scroll-margin-top: 80px; }
 .game .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .game h3 { font-family: var(--display); font-weight: 500; font-size: 19px; line-height: 24px; margin: 0; }
 .game .studio { font-size: 14px; line-height: 20px; color: var(--muted); margin-top: auto; padding-top: 12px; }
+.game .note { font-size: 14px; line-height: 20px; color: var(--text-2); }
 .games.ok .game { background: transparent; box-shadow: none; min-height: 104px; }
 .games.ok .game h3 { color: var(--text-2); }
 
@@ -369,7 +370,7 @@ section { scroll-margin-top: 80px; }
   <div class="wrap"><div class="column">
     <p class="big" data-i18n="stand_p">In one country, on one platform, an entire catalogue of Pokémon games simply does not exist. On iOS they install fine. On Android, in Switzerland, the store comes up empty, title after title, with no announcement, no notice and no reason on record.</p>
     <blockquote class="pullquote">
-      <p data-i18n="irony_q"><strong>Team Switzerland won the 2024 Pokémon UNITE European Cup</strong>, beating Germany in the final. Yet Pokémon UNITE still cannot be downloaded on Android in their own country.</p>
+      <p data-i18n="irony_q"><strong>Team Switzerland won the 2024 Pokémon UNITE European Cup</strong>, beating Germany in the final. Pokémon UNITE shuts down on March 23, 2027, and until then it still cannot be downloaded on Android in their own country.</p>
     </blockquote>
   </div></div>
 </section>
@@ -377,7 +378,7 @@ section { scroll-margin-top: 80px; }
 <section class="band" id="games">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-i18n="games_h2">Fourteen titles, one missing platform</h2>
+      <h2 data-i18n="games_h2">Fifteen titles, one missing platform</h2>
     </div>
     <h3 class="group-h"><span data-i18n="grp_missing">Missing from Google Play</span><span class="count" id="n-missing"></span></h3>
     <div class="games" id="games-missing"></div>
@@ -403,7 +404,7 @@ section { scroll-margin-top: 80px; }
       <p class="lead" data-i18n="reasons_lead">None of these is confirmed. They are the most plausible explanations, ordered roughly from most to least likely.</p>
     </div>
     <ol class="reasons">
-      <li class="reason"><span class="num">1</span><p data-i18n="r1"><b>Regulatory caution.</b> Switzerland sits outside the EU/EEA; gacha and loot-box mechanics may face uncertainty under Swiss gambling or consumer-protection law.</p></li>
+      <li class="reason"><span class="num">1</span><p data-i18n="r1"><b>Regulatory caution.</b> Switzerland sits outside the EU/EEA; gacha and loot-box mechanics may face uncertainty under Swiss gambling or consumer-protection law. Country-level withdrawals do happen: Pokémon UNITE left Belgium and the Netherlands in November 2025, and Pokémon Masters EX leaves Türkiye in December 2026.</p></li>
       <li class="reason"><span class="num">2</span><p data-i18n="r2"><b>Google Play opt-in.</b> Developers must explicitly add each country on Google Play, whereas App Store defaults tend to be broader.</p></li>
       <li class="reason"><span class="num">3</span><p data-i18n="r3"><b>Small market.</b> Roughly 9 million people across three languages, so the cost-benefit may not justify the compliance effort.</p></li>
       <li class="reason"><span class="num">4</span><p data-i18n="r4"><b>Separate pipelines.</b> iOS and Android versions may be handled by different internal teams or legal entities.</p></li>
@@ -481,7 +482,8 @@ section { scroll-margin-top: 80px; }
    ============================================================ */
 
 const GAMES = [
-  { name: "Pokémon UNITE",          studio: "TiMi Studios / Tencent",                       android: false },
+  { name: "Pokémon Champions",      studio: "The Pokémon Company",                          android: false, note: "Mobile release June 17, 2026" },
+  { name: "Pokémon UNITE",          studio: "TiMi Studios / Tencent",                       android: false, note: "Ends service March 23, 2027" },
   { name: "Pokémon Sleep",          studio: "SELECT BUTTON / The Pokémon Company",          android: false },
   { name: "Pokémon Masters EX",     studio: "DeNA",                                         android: false },
   { name: "Pokémon Café ReMix",     studio: "Genius Sonority / The Pokémon Company",        android: false },
@@ -550,6 +552,7 @@ const DONE = [
   "Emailed Hope & Glory PR, TPC's European PR agency (pokemoneu@hopeandglorypr.com)",
   "Submitted Level Infinite press form, GSA region",
   "Contacted Zervas (@Zervas_), Switzerland's top UNITE earner and streamer",
+  "Checked Pokémon Champions (mobile since June 2026): on the Swiss App Store, missing from Swiss Google Play",
 ];
 
 const OPEN = [
@@ -638,14 +641,14 @@ const COMM = [
       stamp_confirmed: "Bestätigt", stamp_evasive: "Ausweichend",
       read: "Lesen", close: "Schliessen",
       stand_p: "In einem Land, auf einer Plattform, existiert ein ganzer Katalog von Pokémon-Spielen schlicht nicht. Auf iOS lassen sie sich problemlos installieren. Auf Android, in der Schweiz, bleibt der Store leer, Titel um Titel, ohne Ankündigung, ohne Hinweis, ohne dokumentierten Grund.",
-      irony_q: "<strong>Team Schweiz gewann den Pokémon-UNITE-Europapokal 2024</strong> und schlug Deutschland im Finale. Doch Pokémon UNITE lässt sich im eigenen Land bis heute nicht auf Android herunterladen.",
-      games_h2: "Vierzehn Titel, eine fehlende Plattform",
+      irony_q: "<strong>Team Schweiz gewann den Pokémon-UNITE-Europapokal 2024</strong> und schlug Deutschland im Finale. Pokémon UNITE wird am 23. März 2027 eingestellt und lässt sich bis dahin im eigenen Land nicht auf Android herunterladen.",
+      games_h2: "Fünfzehn Titel, eine fehlende Plattform",
       grp_missing: "Fehlen im Google Play Store", grp_ok: "Im Google Play Store",
       replies_h2: "Erhaltene Antworten",
       replies_lead: "Zwei Antworten liegen vor. Eine bestätigt den Ausschluss klar. Die andere will nichts bestätigen oder dementieren.",
       reasons_h2: "Warum könnte das passieren?",
       reasons_lead: "Keine davon ist bestätigt. Es sind die plausibelsten Erklärungen, grob von am wahrscheinlichsten bis am wenigsten.",
-      r1: "<b>Regulatorische Vorsicht.</b> Die Schweiz liegt ausserhalb der EU/EWR; Gacha- und Lootbox-Mechaniken könnten unter Schweizer Glücksspiel- oder Konsumentenschutzrecht unsicher sein.",
+      r1: "<b>Regulatorische Vorsicht.</b> Die Schweiz liegt ausserhalb der EU/EWR; Gacha- und Lootbox-Mechaniken könnten unter Schweizer Glücksspiel- oder Konsumentenschutzrecht unsicher sein. Rückzüge aus einzelnen Ländern gibt es: Pokémon UNITE verliess Belgien und die Niederlande im November 2025, Pokémon Masters EX verlässt die Türkei im Dezember 2026.",
       r2: "<b>Google-Play-Opt-in.</b> Entwickler müssen jedes Land bei Google Play explizit hinzufügen, während App-Store-Standards meist breiter sind.",
       r3: "<b>Kleiner Markt.</b> Rund 9 Millionen Menschen in drei Sprachen, der Aufwand lohnt sich womöglich nicht.",
       r4: "<b>Getrennte Pipelines.</b> iOS- und Android-Versionen werden vielleicht von verschiedenen Teams oder Rechtseinheiten betreut.",
@@ -682,7 +685,7 @@ const COMM = [
   /* ---------- Hero case card ---------- */
   function renderCase() {
     const missing = GAMES.filter(g => !g.android).length;
-    const g = GAMES.find(x => x.name === "Pokémon UNITE") || GAMES[0];
+    const g = GAMES.find(x => !x.android) || GAMES[0];
     $("#hero-case").innerHTML = `
       <div class="case-game">${g.name}</div>
       <div class="case-studio">${g.studio}</div>
@@ -700,7 +703,7 @@ const COMM = [
   function renderGames() {
     const missing = GAMES.filter(g => !g.android), ok = GAMES.filter(g => g.android);
     missing.forEach(g => $("#games-missing").appendChild(el("div", "game",
-      `<div class="top"><h3>${g.name}</h3><span class="stamp" data-i18n="stamp_missing">Missing</span></div><div class="studio">${g.studio}</div>`)));
+      `<div class="top"><h3>${g.name}</h3><span class="stamp" data-i18n="stamp_missing">Missing</span></div>${g.note ? `<div class="note">${g.note}</div>` : ""}<div class="studio">${g.studio}</div>`)));
     ok.forEach(g => $("#games-ok").appendChild(el("div", "game",
       `<h3>${g.name}</h3><div class="studio">${g.studio}</div>`)));
     $("#n-missing").textContent = missing.length;
